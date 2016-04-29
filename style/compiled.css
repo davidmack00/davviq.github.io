@@ -1,5 +1,8 @@
 
+  
 /*Less to CSS*/
+
+  
 * {
   margin: 0;
   padding: 0;
@@ -987,34 +990,34 @@ button {
   left: 0;
 }
 .portfolio-view .item.pefin .image {
-  background-image: url("file:///C:/Users/David/Documents/GitHub/davviq.github.io/images/pefin/1.jpg");
+  background-image: url("http://davviq.github.io/images/pefin/1.jpg");
 }
 .portfolio-view .item.pixel-kicks .image {
-  background-image: url("file:///C:/Users/David/Documents/GitHub/davviq.github.io/images/pixel-kicks/1.jpg");
+  background-image: url("http://davviq.github.io/images/pixel-kicks/1.jpg");
 }
 .portfolio-view .item.switchpix .image {
-  background-image: url("file:///C:/Users/David/Documents/GitHub/davviq.github.io/images/switchpix/1.jpg");
+  background-image: url("http://davviq.github.io/images/switchpix/1.jpg");
 }
 .portfolio-view .item.ninjagami .image {
-  background-image: url("file:///C:/Users/David/Documents/GitHub/davviq.github.io/images/ninjagami/1.jpg");
+  background-image: url("http://davviq.github.io/images/ninjagami/1.jpg");
 }
 .portfolio-view .item.tiffany .image {
-  background-image: url("file:///C:/Users/David/Documents/GitHub/davviq.github.io/images/tiffany/1.jpg");
+  background-image: url("http://davviq.github.io/images/tiffany/1.jpg");
 }
 .portfolio-view .item.deltapsi-crest .image {
-  background-image: url("file:///C:/Users/David/Documents/GitHub/davviq.github.io/images/deltapsi-crest/1.jpg");
+  background-image: url("http://davviq.github.io/images/deltapsi-crest/1.jpg");
 }
 .portfolio-view .item.ferrari .image {
-  background-image: url("file:///C:/Users/David/Documents/GitHub/davviq.github.io/images/ferrari/1.jpg");
+  background-image: url("http://davviq.github.io/images/ferrari/1.jpg");
 }
 .portfolio-view .item.logos .image {
-  background-image: url("file:///C:/Users/David/Documents/GitHub/davviq.github.io/images/logos/1.jpg");
+  background-image: url("http://davviq.github.io/images/logos/1.jpg");
 }
 .portfolio-view .item.sketches .image {
-  background-image: url("file:///C:/Users/David/Documents/GitHub/davviq.github.io/images/sketches/1.jpg");
+  background-image: url("http://davviq.github.io/images/sketches/1.jpg");
 }
 .portfolio-view .item.doubledot .image {
-  background-image: url("file:///C:/Users/David/Documents/GitHub/davviq.github.io/images/doubledot/1.jpg");
+  background-image: url("http://davviq.github.io/images/doubledot/1.jpg");
 }
 .portfolio-view .about-section {
   position: relative;
@@ -1056,7 +1059,7 @@ button {
 }
 .portfolio-view .about-section .profile {
   margin-bottom: 20px;
-  background: url(file:///C:/Users/David/Documents/GitHub/davviq.github.io/images/pic.jpg) center center no-repeat;
+  background: url(http://davviq.github.io/images/pic.jpg) center center no-repeat;
   background-size: cover;
   -webkit-filter: grayscale(1) contrast(1.25);
   -moz-filter: grayscale(1) contrast(1.25);
