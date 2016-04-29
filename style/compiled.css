@@ -1,8 +1,5 @@
 
-	
 /*Less to CSS*/
-
-	
 * {
   margin: 0;
   padding: 0;
@@ -238,6 +235,8 @@ button {
 .duic-check {
   display: inline-block;
   font-size: 30px;
+  width: 1.06066017em;
+  height: 0.70710678em;
 }
 .duic-check:before {
   content: "";
@@ -250,10 +249,10 @@ button {
   border-color: inherit;
   border-top: 0;
   border-right: 0;
-  -webkit-transform: translate3d(0, -0.1767767em, 0) scale3d(1, 1, 1) rotate3d(0, 0, 1, -45deg);
-  -moz-transform: translate3d(0, -0.1767767em, 0) scale3d(1, 1, 1) rotate3d(0, 0, 1, -45deg);
-  -ms-transform: translate3d(0, -0.1767767em, 0) scale3d(1, 1, 1) rotate3d(0, 0, 1, -45deg);
-  transform: translate3d(0, -0.1767767em, 0) scale3d(1, 1, 1) rotate3d(0, 0, 1, -45deg);
+  -webkit-transform: translate3d(0.03033009em, -0.0732233em, 0) scale3d(1, 1, 1) rotate3d(0, 0, 1, -45deg);
+  -moz-transform: translate3d(0.03033009em, -0.0732233em, 0) scale3d(1, 1, 1) rotate3d(0, 0, 1, -45deg);
+  -ms-transform: translate3d(0.03033009em, -0.0732233em, 0) scale3d(1, 1, 1) rotate3d(0, 0, 1, -45deg);
+  transform: translate3d(0.03033009em, -0.0732233em, 0) scale3d(1, 1, 1) rotate3d(0, 0, 1, -45deg);
 }
 .duic-arrow {
   font-size: 20px;
@@ -425,11 +424,20 @@ button {
   display: inline-block;
   padding: 10px 40px;
   margin-top: 40px;
+  pointer-events: auto;
   cursor: pointer;
   font-size: 24px;
   font-weight: 300;
   text-transform: uppercase;
   border: 2px solid #ffffff;
+}
+.home-view .content .enter:hover {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  background: #ffffff;
+  color: #009ceb;
 }
 .portfolio-view {
   text-align: center;
@@ -572,6 +580,31 @@ button {
   -moz-transform: skewX(8deg);
   -ms-transform: skewX(8deg);
   transform: skewX(8deg);
+}
+.portfolio-view .nav-bar .footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  padding: 0 40px;
+  margin-bottom: 20px;
+}
+.portfolio-view .nav-bar .footer .icon {
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  height: 40px;
+  -webkit-transform: skewX(2deg);
+  -moz-transform: skewX(2deg);
+  -ms-transform: skewX(2deg);
+  transform: skewX(2deg);
+  fill: #1f5c7a;
+}
+.portfolio-view .nav-bar .footer .icon:hover {
+  fill: #009ceb;
 }
 .portfolio-view .nav-cover {
   z-index: 1;
@@ -954,34 +987,34 @@ button {
   left: 0;
 }
 .portfolio-view .item.pefin .image {
-  background-image: url("http://www.davviq.com/images/pefin/1.jpg");
+  background-image: url("file:///C:/Users/David/Documents/GitHub/davviq.github.io/images/pefin/1.jpg");
 }
 .portfolio-view .item.pixel-kicks .image {
-  background-image: url("http://www.davviq.com/images/pixel-kicks/1.jpg");
+  background-image: url("file:///C:/Users/David/Documents/GitHub/davviq.github.io/images/pixel-kicks/1.jpg");
 }
 .portfolio-view .item.switchpix .image {
-  background-image: url("http://www.davviq.com/images/switchpix/1.jpg");
+  background-image: url("file:///C:/Users/David/Documents/GitHub/davviq.github.io/images/switchpix/1.jpg");
 }
 .portfolio-view .item.ninjagami .image {
-  background-image: url("http://www.davviq.com/images/ninjagami/1.jpg");
+  background-image: url("file:///C:/Users/David/Documents/GitHub/davviq.github.io/images/ninjagami/1.jpg");
 }
 .portfolio-view .item.tiffany .image {
-  background-image: url("http://www.davviq.com/images/tiffany/1.jpg");
+  background-image: url("file:///C:/Users/David/Documents/GitHub/davviq.github.io/images/tiffany/1.jpg");
 }
 .portfolio-view .item.deltapsi-crest .image {
-  background-image: url("http://www.davviq.com/images/deltapsi-crest/1.jpg");
+  background-image: url("file:///C:/Users/David/Documents/GitHub/davviq.github.io/images/deltapsi-crest/1.jpg");
 }
 .portfolio-view .item.ferrari .image {
-  background-image: url("http://www.davviq.com/images/ferrari/1.jpg");
+  background-image: url("file:///C:/Users/David/Documents/GitHub/davviq.github.io/images/ferrari/1.jpg");
 }
 .portfolio-view .item.logos .image {
-  background-image: url("http://www.davviq.com/images/logos/1.jpg");
+  background-image: url("file:///C:/Users/David/Documents/GitHub/davviq.github.io/images/logos/1.jpg");
 }
 .portfolio-view .item.sketches .image {
-  background-image: url("http://www.davviq.com/images/sketches/1.jpg");
+  background-image: url("file:///C:/Users/David/Documents/GitHub/davviq.github.io/images/sketches/1.jpg");
 }
 .portfolio-view .item.doubledot .image {
-  background-image: url("http://www.davviq.com/images/doubledot/1.jpg");
+  background-image: url("file:///C:/Users/David/Documents/GitHub/davviq.github.io/images/doubledot/1.jpg");
 }
 .portfolio-view .about-section {
   position: relative;
@@ -1023,7 +1056,7 @@ button {
 }
 .portfolio-view .about-section .profile {
   margin-bottom: 20px;
-  background: url(http://www.davviq.com/images/pic.jpg) center center no-repeat;
+  background: url(file:///C:/Users/David/Documents/GitHub/davviq.github.io/images/pic.jpg) center center no-repeat;
   background-size: cover;
   -webkit-filter: grayscale(1) contrast(1.25);
   -moz-filter: grayscale(1) contrast(1.25);
@@ -1062,8 +1095,10 @@ button {
   -webkit-justify-content: center;
   justify-content: center;
 }
+.portfolio-view .contact-section .main-header {
+  margin-top: auto;
+}
 .portfolio-view .contact-section .mail {
-  padding: 40px 0;
   margin-bottom: 40px;
   font-size: 72px;
   font-weight: 100;
@@ -1107,6 +1142,20 @@ button {
 .portfolio-view .contact-section .logo-wrapper .logo {
   position: relative;
   left: 2%;
+}
+.portfolio-view .contact-section .links {
+  display: -webkit-flex;
+  display: flex;
+  padding-top: 40px;
+  margin-top: auto;
+}
+.portfolio-view .contact-section .links .icon {
+  width: 40px;
+  height: 40px;
+  fill: #1f5c7a;
+}
+.portfolio-view .contact-section .links .icon:hover {
+  fill: #009ceb;
 }
 .item-view .nav-area {
   font-size: 80px;
@@ -1357,14 +1406,14 @@ button {
 @media (max-width: 600px) {
   .item-view {
     /*.nav-shadow {
-			//reset
-			.o1;
-		}
+      //reset
+      .o1;
+    }
 
-		.shadow-cover {
-			//reset
-			.o1;
-		}*/
+    .shadow-cover {
+      //reset
+      .o1;
+    }*/
   }
   .item-view .nav-area {
     display: -webkit-flex;
@@ -1748,8 +1797,8 @@ body {
 }
 .item-view {
   /*.nav-shadow, .shadow-cover {
-		.animate(0.5s);
-	}*/
+    .animate(0.5s);
+  }*/
 }
 .item-view .items-container,
 .item-view .nav-area {
@@ -1772,7 +1821,7 @@ body {
 }
 .item-view.dui-active {
   /*.nav-shadow, .shadow-cover {
-        	.animate(0.5s 1s);
+          .animate(0.5s 1s);
         }*/
 }
 .item-view.dui-active .items-container {
@@ -1808,24 +1857,24 @@ body {
 }
 .home-view {
   /*
-	  /////////////////////
-	 //  message-load
+    /////////////////////
+   //  message-load
 
-	@delay2: @delay1 + @time1*1/2 + 0s;
-	@time2: 2s;
+  @delay2: @delay1 + @time1*1/2 + 0s;
+  @time2: 2s;
 
-	@load-message-keys: {
-		from {
-			//.transform-basic(@S: 0.9);
-			.o0;
-		}
-	    to {
-	    	//.transform-reset;
-	    	.o1;
-	    }
-	};
-	.set-animation(load-message-animation, @load-message-keys, @time2 @delay2, ease, @fill: none);
-	*/
+  @load-message-keys: {
+    from {
+      //.transform-basic(@S: 0.9);
+      .o0;
+    }
+      to {
+        //.transform-reset;
+        .o1;
+      }
+  };
+  .set-animation(load-message-animation, @load-message-keys, @time2 @delay2, ease, @fill: none);
+  */
 }
 @-webkit-keyframes load-bkg-animation {
   from {
