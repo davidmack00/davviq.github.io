@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Direct UI</title>
+
+	<link href="style.less" rel="stylesheet/less" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.6.0/less.min.js"></script>
+
+	<script src="dui.js"></script>
+</head>
+
+<body>
+	<div class="parent">
+		<div class="button" dui-toggle="target">
+			trigger
+		</div>
+	</div>
+
+	<div div class="menu" dui-id="target">
+		target
+	</div>
+	
+	<div class="parent">
+		<div class="button" dui-toggle>
+			trigger (default target)
+		</div>
+		<div class="menu">
+			exposed menu
+		</div>
+	</div>
+	
+	<div class="parent" dui-quiet>
+		<div class="button" dui-toggle>
+			trigger (default target with quiet)
+		</div>
+		<div class="menu">
+			exposed menu
+		</div>
+	</div>
+	
+	<div class="parent">
+		<div class="button" dui-id="myself" dui-toggle="myself">
+			target self
+		</div>
+	</div>
+	
+	<div class="parent" dui-pin>
+		<div class="button" dui-toggle>
+			trigger (default target with pin)
+		</div>
+	</div>
+	
+	<div class="parent">
+		<div class="button" dui-enable="enable1 enable2">
+			enable trigger
+		</div>
+	</div>
+	<div class="menu" dui-id="enable1">
+		enable target 1
+	</div>
+	<div class="menu" dui-id="enable1">
+		enable target 1 (copy)
+	</div>
+	<div class="menu" dui-id="enable2">
+		enable target 2
+	</div>
+	
+	<div class="parent">
+		<div class="button" dui-enable="pin">
+			enable pin
+		</div>
+	</div>
+	
+	<div class="parent">
+		<div class="button" dui-disable="pin">
+			disable pin
+		</div>
+	</div>
+
+	<div div class="menu" dui-id="pin" dui-pin>
+		pinned part
+	</div>
+
+</body>

@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>davviq</title>
+	
+	<meta name = "viewport" content = "user-scalable=no,width=device-width" />
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,400italic' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700' rel='stylesheet' type='text/css'>
+
+    <link rel="icon" type="image/png" href="images/favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="images/favicon/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="images/favicon/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="images/favicon/favicon-16x16.png" sizes="16x16">
+	
+    <script src="libs/jquery.js"></script>
+    <script src="projects/duit/duit.js"></script>
+    <script src="projects/dui/dui.js"></script>
+
+    <link href="style/compiled.css" type="text/css" rel="stylesheet"/>
+    <!-- <link href="style/main.less" rel="stylesheet/less"/>
+    <script src="libs/less.js"></script> -->
+
+    <script>
+        $(function() {
+            console.log("site script started");
+
+            var body = $("body");
+            var portfolio = $("#portfolio-view");
+            var lastTop = 0;
+
+            var close = $("#close-item, .grid-icon-wrapper"),
+                next = $("#next-item"),
+                prev = $("#previous-item"),
+                portfolioItems = $(".portfolio-view .item");
+            var all = close.add(next).add(prev).add(portfolioItems);
+
+            var items = $(".item-view .item-area");
+
+            var workLink = $("#work-link"),
+                aboutLink = $("#about-link"),
+                contactLink = $("#contact-link"),
+                workSection = $("#work-section"),
+                aboutSection = $("#about-section"),
+                contactSection = $("#contact-section");
+
+
+            //scrolling logic
+
+            portfolioItems.on("click", function() {
+                lastTop = body.scrollTop();
+                portfolio.css({top: -lastTop});
+            });
+
+            all.on('click', function() {
+                body.scrollTop(0);
+            });
+
+            close.on("click", function() {
+                //body.scrollTop(lastTop);
+                portfolio.css({top: 0});
+
+                prev.removeClass("disabled");
+                next.removeClass("disabled");
+            });
+
+            function scroll(location) {
+                body.animate({scrollTop:location.offset().top}, 500);
+            }
+
+            workLink.on("click", function() {
+                //body.scrollTop(workSection.offset().top);
+                body.animate({scrollTop:workSection.offset().top}, 500);
+            });
+
+            aboutLink.on("click", function() {
+                //body.scrollTop(aboutSection.offset().top);
+				if ($(window).height() > aboutSection.outerHeight()) {
+					body.animate({scrollTop:aboutSection.offset().top - (($(window).height() - aboutSection.outerHeight())/2)}, 500);
+				}
+				else {
+					body.animate({scrollTop:aboutSection.offset().top - 50}, 500);
+				}
+
+            });
+
+            contactLink.on("click", function() {
+                //body.scrollTop(contactSection.offset().top);
+                body.animate({scrollTop:contactSection.offset().top}, 500);
+            });
+
+
+            //slideshow code
+
+            // doesn't work
+            // portfolioItems.on('click', function() {
+            //     var after = items.filter(".dui-active").next(items);
+            //     var before = items.filter(".dui-active").prev(items);
+
+            //     if (after.length == 0) {
+            //         next.addClass("disabled");
+            //     }
+
+            //     if (before.length == 0) {
+            //         prev.addClass("disabled");
+            //     }
+
+            //     else {}
+            // });
+
+            next.on('click', function() {
+                var curr = items.filter(".dui-active").next(items);
+
+                prev.removeClass("disabled");
+
+                if (curr.length > 0) {
+                    items.removeClass("dui-active");
+                    curr.addClass("dui-active");
+
+                    curr = items.filter(".dui-active").next(items);
+
+                    if (curr.length == 0) {
+                        next.addClass("disabled");
+                    }
+                    else {}
+                }
+                else {
+                    next.addClass("disabled");
+                }
+            });
+
+            prev.on('click', function() {
+                var curr = items.filter(".dui-active").prev(items);
+
+                next.removeClass("disabled");
+
+                if (curr.length > 0) {
+                    items.removeClass("dui-active");
+                    curr.addClass("dui-active");
+
+                    curr = items.filter(".dui-active").prev(items);
+
+                    if (curr.length == 0) {
+                        prev.addClass("disabled");
+                    }
+                    else {}
+                }
+                else {
+                    prev.addClass("disabled");
+                }
+            });
+
+            //arrow keyboard buttons
+            body.keydown(function(e) {
+
+                // left
+                if(e.which == 37) {
+                     prev.trigger("click");
+                }
+
+                // right
+                else if(e.which == 39) {
+                      next.trigger("click");
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <div class="templates" style="display: none; width: 0; height: 0; pointer-events: none;">
+
+        <script id="logomark-template" type="text/duit">
+            <svg class="logo">
+                <use xlink:href="#logomark"></use>
+            </svg>
+        </script>
+
+        <script id="logotype-template" type="text/duit">
+            <svg class="logo">
+                <use xlink:href="#logotype"></use>
+            </svg>
+        </script>
+
+        <script id="grid-icon-template" type="text/duit">
+            <div class="grid-icon-wrapper" dui-disable="item-view" dui-enable="portfolio-view">
+                <div class="grid-icon">
+                    <div class="row">
+                        <div class="box"></div>
+                        <div class="box"></div>
+                        <div class="box"></div>
+                    </div>
+                    <div class="row">
+                        <div class="box"></div>
+                        <div class="box"></div>
+                        <div class="box"></div>
+                    </div>
+                    <div class="row">
+                        <div class="box"></div>
+                        <div class="box"></div>
+                        <div class="box"></div>
+                    </div>
+                </div>
+            </div>
+        </script>
+
+        <script id="portfolio-item-template" type="text/duit">
+            <div class="item {{name}}" dui-disable="portfolio-view item-area" dui-enable="item-view item-{{name}}">
+                <div class="item-inner"></div>
+                <div class="title-wrapper">
+                    <div class="title-area">
+                        <div class="title">{{displayName}}</div>
+                        <div class="bkg"></div>
+                    </div>
+                </div>
+                <div class="image-wrapper">
+                    <div class="image {{name}}"></div>
+                    <div class="cover"></div>
+                </div>
+            </div>
+        </script>
+
+    </div>
+
+
+    <div id="shell" class="dui-active" dui-id="shell" dui-pin>
+
+        <div class="home-view dui-active" dui-id="home-view" dui-pin dui-disable="home-view shell" dui-enable="portfolio-view">
+            <div class="bkg"></div>
+            <div class="bkg-squares">
+                <div class="row">
+                    <div class="b"></div>
+                    <div class="b"></div>
+                    <div class="b"></div>
+                    <div class="b"></div>
+                    <div class="b"></div>
+                </div>
+                <div class="row">
+                    <div class="b"></div>
+                    <div class="b"></div>
+                    <div class="b"></div>
+                    <div class="b"></div>
+                    <div class="b"></div>
+                </div>
+                <div class="row">
+                    <div class="b"></div>
+                    <div class="b"></div>
+                    <div class="b"></div>
+                    <div class="b"></div>
+                    <div class="b"></div>
+                </div>
+                <div class="row">
+                    <div class="b"></div>
+                    <div class="b"></div>
+                    <div class="b"></div>
+                    <div class="b"></div>
+                    <div class="b"></div>
+                </div>
+                <div class="row">
+                    <div class="b"></div>
+                    <div class="b"></div>
+                    <div class="b"></div>
+                    <div class="b"></div>
+                    <div class="b"></div>
+                </div>
+            </div>
+            <div class="content">
+				<div data-duit='{"tmpl": "logotype-template"}'></div>
+				<div class="message">
+                <div class="word _1">Design</div>
+                <div class="word _2">Engineer</div>
+                <div class="word _3">Create</div>
+				</div>
+				<div>
+					<div class="enter" >
+						<div class="fill">
+                            <div class="row">
+                                <div class="b"></div>
+                                <div class="b"></div>
+                                <div class="b"></div>
+                                <div class="b"></div>
+                                <div class="b"></div>
+                            </div>
+                        </div>
+						<div class="text">See my work</div>
+					</div>
+                </div>
+			</div>
+        </div>
+
+        <div class="portfolio-view" id="portfolio-view" dui-id="portfolio-view" dui-pin>
+            
+            <div class="nav-area" dui-id="nav-area" dui-pin>
+                <div class="nav-bar">
+                    <div class="bkg"></div>
+                    <div class="nav-bar-inner">
+                        <div class="logo-area" dui-disable="nav-area portfolio-view" dui-enable="home-view">
+                            <div data-duit='{"tmpl": "logomark-template"}'></div>
+                            <div class="divider">
+                                <div class="fill"></div>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div class="link" id="work-link" dui-disable="nav-area">
+                                <div class="text">Work</div>
+                            </div>
+
+                            <div class="link" id="about-link" dui-disable="nav-area">
+                                <div class="text">About</div>
+                            </div>
+
+                            <div class="link" id="contact-link" dui-disable="nav-area">
+                                <div class="text">Contact</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-cover" dui-disable="nav-area"></div>
+            </div>
+            
+            <div class="portfolio-area">
+                <div class="menu-button" dui-enable="nav-area">
+                    <div class="bars">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="bkg"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
+
+
+
+                <div class="work-section" id="work-section">
+
+                    <div class="main-header">
+                        <div class="header-text">My Work</div>
+                        <div class="header-caption">
+                            <!-- &ldquo; If you ask the right questions,
+                            <br />
+                            you will discover things you didn't know before.&rdquo; -->
+							Hi there, I'm David from New York.
+							<br />
+							I solve UX problems, here are a few examples.
+                        </div>
+                    </div>
+                    
+                    <div class="item-group">
+                        
+                        <div class="section-header">
+                            <div class="bar"></div>
+                            <div class="title">Conceptual</div>
+                            <div class="bar"></div>
+                        </div>
+
+                        <div data-duit='{
+                            "tmpl": "portfolio-item-template",
+                            "data": [
+								{"name": "pefin",       	"displayName": "Pefin AI Advisor"},
+                                {"name": "ninjagami",       "displayName": "NinjaGami"},
+                                {"name": "doubledot",       "displayName": "DoubleDot"},
+                                {"name": "switchpix",       "displayName": "SwitchPix"},
+                                {"name": "pixel-kicks",     "displayName": "Pixel Kicks"},
+                                {"name": "tiffany",         "displayName": "Tiffany Gift Bag"}
+                            ]}'>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="item-group">
+                        
+                        <div class="section-header">
+                            <div class="bar"></div>
+                            <div class="title">Visual</div>
+                            <div class="bar"></div>
+                        </div>
+
+                        <div data-duit='{
+                            "tmpl": "portfolio-item-template",
+                            "data": [
+                                {"name": "deltapsi-crest",  "displayName": "St. Anthony Hall Crest"},
+                                {"name": "ferrari",         "displayName": "Ferrari F430"},
+                                {"name": "sketches",         "displayName": "Sketches"}
+                            ]}'>
+                        </div>
+                        
+                    </div>
+
+                    <!-- <div class="item-group">
+                        
+                        <div class="section-header">
+                            <div class="bar"></div>
+                            <div class="title">Digital</div>
+                            <div class="bar"></div>
+                        </div>
+
+                        <div data-duit='{
+                            "tmpl": "portfolio-item-template",
+                            "data": [
+                                {"name": "doubledot",       "displayName": "DoubleDot"}
+                            ]}'>
+                        </div>
+
+                    </div> -->
+                    
+                </div>
+
+                <div class="about-section" id="about-section">
+
+                    <div class="main-header">
+                        <div class="header-text">Hi, I'm David</div>
+                    </div>
+
+                    <div class="content">
+
+                        <div class="profile"></div>
+
+                        <div class="text">
+                            <!-- <div class="greeting">It's a pleasure to meet you!</div> -->
+
+                            <p>Equal parts artist and scientist, it is my goal to make our interactive world a more beautiful and functional place to live. I believe every experience is an opportunity to understand our environment and ourselves better; if you listen, things around you will speak, and if you ask the right questions, you will learn something you didn't know before.</p>
+                            
+                            <p>I decided to study mechanical engineering because it would teach me about how and why everything works. My natural instinct to deconstruct an idea down to its smallest components and rebuild it again became a formal practice. Now I apply this experience to analyze a system for its parts, find both the faults and feats of its design, and imagine ways to improve it. While other disciplines aim to understand reality, both engineers and designers ultimately seek to build a new one. It is from this perspective that I approach every challenge.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="contact-section" id="contact-section">
+
+                    <div class="main-header">
+                        <div class="header-text">Contact Me</div>
+                    </div>
+
+                    <div class="mail">
+                        <span>d</span>a<span>v</span>v<span>i</span>q<span>@</span>g<span>m</span>a<span>i</span>l<span>.</span>c<span>o</span>m
+                    </div>
+
+                    <div class="logo-wrapper" dui-disable="portfolio-view" dui-enable="home-view">
+                        <div data-duit='{"tmpl": "logomark-template"}'></div>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+
+        <div class="item-view" dui-id="item-view" dui-pin>
+            
+            <div class="nav-area">
+                <div class="close-area" id="close-item" dui-disable="item-view" dui-enable="portfolio-view">    
+                    <div class="close"></div>
+                </div>
+                <div class="arrow-area back" id="previous-item">
+                    <div class="arrow"></div>
+                </div>
+                <div class="arrow-area next" id="next-item">
+                    <div class="arrow"></div>
+                </div>
+            </div>
+
+            <!-- <div class="nav-shadow"></div> -->
+
+            <!-- <div class="shadow-cover"></div> -->
+
+            <div class="items-container">
+				
+				<div class="item-area pefin" dui-id="item-area item-pefin" dui-pin>
+                    <div class="item-content">
+
+                        <div class="title">Pefin.com</div>
+                        <div class="subtitle">World's first AI financial advisor</div>
+
+                        <img class="img" src="images/pefin/1.jpg"/>
+                        
+                        <!-- <div class="section">Overview</div> -->
+						<a href="http://www.pefin.com" target="blank"><div class="duic-button">View Site</div></a>
+
+                        <p>Pefin is the world's first AI financial advisor. Their goal is to make it easier than ever to secure a happy financial future.</p>
+
+						<p>The platform uses artificial intelligence technology to help users make the most important financial decisions effortlessly and confidently. Pefin provides personalized, actionable planning and investment strategies that automatically adapt and grow with a user as their life and the world around them changes.</p>
+
+						<p>Over the last 4 years as lead UX designer, I have worked to design the entire Pefin platform from the ground up from the user experience perspective. It has been a great privilege to have had a hand in bringing the product from an initial concept to its beta launch.</p>
+
+                        <div class="section">Main Page</div>
+                        <img class="img" src="images/pefin/2.jpg"/>
+
+						<div class="section">Child Plan</div>
+						<img class="img" src="images/pefin/3.jpg"/>
+
+						<div class="section">Logo</div>
+						<img class="img" src="images/logos/p.jpg"/>
+
+                        <div data-duit='{"tmpl": "grid-icon-template"}'></div>
+
+                    </div>
+                </div>
+
+                <div class="item-area ninjagami" dui-id="item-area item-ninjagami" dui-pin>
+                    <div class="item-content">
+
+                        <div class="title">NinjaGami</div>
+                        <div class="subtitle">Gesture controlled action game</div>
+
+                        <img class="img" src="images/ninjagami/1.jpg"/>
+                        
+                        <!-- <div class="section">Overview</div> -->
+
+                        <a target="_blank" href="http://www.davviq.com/projects/ninjagamidemo">
+                            <div class="duic-button">Play Demo</div>
+                        </a>
+
+                        <p>NinjaGami is a platformer and puzzle based game concept with precise and nuanced gesture-based controls that eliminate the need for virtualized physical inputs.</p>
+
+                        <div class="section">Story &amp; Game Mechanics</div>
+
+                        <p>You begin as a legendary samurai from the old storybooks. Suddenly a mysterious force begins destroying the books you are written into. You resolve to take on the responsibility of the hero and reconstruct your world.</p>
+
+                        <p>Because you live in a book, everything is made of paper. The enemies are origami creatures which you must slash or unfold to destroy and retrieve the paper they are made of. You develop skills to fold the paper you gather into objects and use these objects to solve puzzles. Since the world has been torn up and haphazardly rearranged, gravity points in different directions and holes in your world create powerful winds that blow you and other objects around. These forces create "fields" in the game that will orient you in many different directions. You will have to use combinations of the origami objects you make and the directions of gravity and other fields to your advantage to get through.</p>
+
+
+                        <div class="section">Gesture Control Method</div>
+
+                        <P>A core tenet of this game concept is the interface between the player and the character. While traditional controls like buttons and analog sticks may be ingrained in the mental model of gamers, they make a poor transition to touch screen technology. To counter this, I designed an advanced gesture control scheme through which the player will interact intuitively with the game without the pitfalls of virtualized physical inputs.</P>
+
+                        <P>A key principle for fast-paced precision input is muscle memory: you can generate input without averting your eyes from the main action. Physical buttons with tactile feedback provide a straightforward solution. However when it comes to a touchscreen, virtualizing these inputs introduces a large amount of error into the system: the user cannot know exactly where the virtual buttons are without directly looking at them. It seems a good answer (one which is now widely used in mobile environments) is to use gesture-based controls. These work well because only the relative position and direction matter, not the absolute position. Compared with virtualized inputs, it doesn't matter where on the touchscreen the user interacts. Instead the complexity arises in the ability to map different-yet-simple enough gestures to however many inputs are required to play the game. With physical inputs, you could have as many buttons as you want. Gesture inputs give you no buttons at all.</P>
+
+                        <P>My solution was a system of gestures designed to handle a complex 2D platforming environment. Press and hold to the right of the player and he moves right. Press to the left side, and he moves left. Tap anywhere and he jumps. Swipe back and forth anywhere and he will hack at enemies around him with his sword. You can use these in tandem to run, jump, and slice in midair. Secondary gestures can support other actions like climbing by putting one thumb over the other (like the character's hands while climbing), swimming, locking onto objects and enemies, slowing or reversing time, and more.</P>
+
+                        <P>The concept was further tested, and a working prototype of this input method proved to be intuitive and functional, concluding that while buttons and control sticks are great physical inputs, their virtualized versions fall flat next to gesture inputs.</P>
+
+                        <div class="section">More</div>
+
+                        <img class="img" src="images/ninjagami/6.jpg"/>
+                        <img class="img" src="images/ninjagami/3.jpg"/>
+                        <img class="img" src="images/ninjagami/2.jpg"/>
+                        <img class="img" src="images/ninjagami/4.jpg"/>
+                        <img class="img" src="images/ninjagami/5.jpg"/>
+                        <img class="img" src="images/ninjagami/7.jpg"/>
+
+                        <div data-duit='{"tmpl": "grid-icon-template"}'></div>
+
+                    </div>
+                </div>
+
+                <div class="item-area doubledot" dui-id="item-area item-doubledot" dui-pin>
+                    <div class="item-content">
+
+                        <div class="title">DoubleDot</div>
+                        <div class="subtitle">A dot matching game</div>
+                        
+                        <img class="img" src="images/doubledot/2.jpg"/>
+
+
+                        <div>
+                            <a target="_blank" href="http://www.davviq.com/projects/doubledot">
+                                <div class="duic-button">Play Demo</div>
+                            </a>
+                        </div>
+                        
+                        <!-- <div class="section">Overview</div> -->
+
+                        <p>DoubleDot Is a twist on the dot matching game archetype. The goal is to remove all the dots on the screen. Connect dots with matching outside colors to remove them. Click on a dot to flip its outside and inside colors. You can traverse the game board at 90 degree angles and can skip over empty spaces. More game options can be found in the menu.</p>
+
+                        <div class="section">More</div>
+
+                        <img class="img" src="images/doubledot/3.jpg"/>
+
+                        <div data-duit='{"tmpl": "grid-icon-template"}'></div>
+                        
+                    </div>
+                </div>
+
+                <div class="item-area switchpix" dui-id="item-area item-switchpix" dui-pin>
+                    <div class="item-content">
+
+                        <div class="title">SwitchPix</div>
+                        <div class="subtitle">Portable camera with built-in tripod</div>
+
+                        <img class="img" src="images/switchpix/1.jpg"/>
+                        
+                        <div class="section">Overview</div>
+
+                        <p>Tripods serve an important function: to stabilize a camera for things like long-exposures multiple shots, and increased low-light performance. But even compact tripods are bulky and take time to set up--you may miss that moment. The SwitchPix aims to solve these problems and a few others. It features a one-button-action tripod, clamping mechanism, rotating lens, and remote shutter button. Its name implies the quick transformation to its freestanding shooting mode like the opening of a switch blade.</p>
+
+                        <div class="section">Design Process</div>
+
+                        <p>The core design precepts for this project were simplicity, versatility, and a compact form-factor. After iterating through many different concepts from telescoping bodies to bean-bag cushions, a three-legged system was determined to be the most viable solution.</p>
+
+                        <div class="section">Usage</div>
+
+                        <p>With the push of a button, SwitchPix instantly transforms into a freestanding shooter. Even without a flat surface, it can attach to various geometries such as railings, fences, and trees. And an on-screen leveling assist feature via the onboard accelerometers helps ensure a straight shot every time.</p>
+
+                        <p>Take better self-portraits and group shots with the removable remote shutter button and rotating lens. See the screen when framing the shot and take it when you are ready--no need for timers. And by extending the central leg as a handle, you can take pictures and record video above the crowd.</p>
+
+                        <div class="section">More</div>
+
+                        <img class="img" src="images/switchpix/2.jpg"/>
+                        <img class="img" src="images/switchpix/3.jpg"/>
+                        <img class="img" src="images/switchpix/7.jpg"/>
+                        <img class="img" src="images/switchpix/4.jpg"/>
+                        <img class="img" src="images/switchpix/5.jpg"/>
+                        <img class="img" src="images/switchpix/6.jpg"/>
+
+                        <div data-duit='{"tmpl": "grid-icon-template"}'></div>
+
+                    </div>
+                </div>
+
+                <div class="item-area pixel-kicks" dui-id="item-area item-pixel-kicks" dui-pin>
+                    <div class="item-content">
+
+                        <div class="title">Pixel Kicks</div>
+                        <div class="subtitle">Digital display shoes</div>
+
+                        <img class="img" src="images/pixel-kicks/1.jpg"/>
+
+                        <div class="section">Overview</div>
+
+                        <p>Pixel Kicks are a fashion statment that bring custom designs to your shoes. Wearers can download pre-made or user-made designs and animations straight to the sneaker to be displayed instantly. Power is generated by the natural walking motion of the wearer, and accelerometers within the shoe can give designs visual interactive feedback with each step the wearer takes. The technology utilizes low pixel density semi-flexible e-ink displays to improve the systems energy efficiency, increase its durability and dayligt visibility, and reduce its manufacturing cost.</p>
+
+                        <div data-duit='{"tmpl": "grid-icon-template"}'></div>
+
+                    </div>
+                </div>
+
+                <div class="item-area tiffany" dui-id="item-area item-tiffany" dui-pin>
+                    <div class="item-content">
+
+                        <div class="title">Tiffany Gift Bag</div>
+                        <div class="subtitle">Designer bag for the MET</div>
+                        
+                        <img class="img" src="images/tiffany/1.jpg"/>
+
+                        <div class="section">Overview</div>
+
+                        <p>Designed as a gift bag for the Metropolitan Museum of Art store, this bag emanates classic beauty, craftsmanship, and American Art history. With a stiff clear plastic design, purchases are displayed through iconic Tiffany stained glass motifs. Light diffuses through the bag's surfaces as though the bag was made of glass itself.</p>
+
+                        <div data-duit='{"tmpl": "grid-icon-template"}'></div>
+                    </div>
+                </div>
+                
+                <div class="item-area deltapsi-crest" dui-id="item-area item-deltapsi-crest" dui-pin>
+                    <div class="item-content">
+
+                        <div class="title">St. Anthony Hall Crest</div>
+                        <div class="subtitle">Crest design for fundraiser</div>
+                        
+                        <img class="img" src="images/deltapsi-crest/1.jpg"/>
+
+                        <div class="section">Overview</div>
+
+                        <p>In sophomore year of college, my group of close friends decided we would attempt to establish our own co-ed secret society dubbed a 'Frasority.' Two years and one heck of a journey later, we were the re-founding members of the Rochester chapter of St. Anthony Hall national fraternity founded in 1847.</p>
+
+                        <p>As a fundraiser for our new chapter, I designed a crest that would be printed on merchandise. I set up a website where orders could be placed, and worked with an online manufacturer to engrave and print the design. Shirts and flasks were sold to students across the country raising a few thousand dollars for the chapter.</p>
+
+                        <div class="section">More</div>
+
+                        <img class="img" src="images/deltapsi-crest/2.jpg"/>
+                        <img class="img" src="images/deltapsi-crest/3.jpg"/>
+                        <img class="img" src="images/deltapsi-crest/4.jpg"/>
+
+                        <div data-duit='{"tmpl": "grid-icon-template"}'></div>
+                        
+                    </div>
+                </div>
+                
+                <div class="item-area ferrari" dui-id="item-area item-ferrari" dui-pin>
+                    <div class="item-content">
+
+                        <div class="title">Ferrari F430</div>
+                        <div class="subtitle">3D modeled and rendered car</div>
+                        
+                        <img class="img" src="images/ferrari/1.jpg"/>
+                        <img class="img" src="images/ferrari/2.jpg"/>
+                        <img class="img" src="images/ferrari/3.jpg"/>
+                        <!-- <img class="img" src="images/ferrari/r.jpg"/> -->
+                        <img class="img" src="images/ferrari/y.jpg"/>
+                        <img class="img" src="images/ferrari/b.jpg"/>
+
+                        <div data-duit='{"tmpl": "grid-icon-template"}'></div>
+                        
+                    </div>
+                </div>
+
+                <!-- <div class="item-area logos" dui-id="item-area item-logos" dui-pin>
+                    <div class="item-content">
+
+                        <div class="title">Logos</div>
+                        <div class="subtitle">Various designs</div>
+
+                        <br/>
+                        
+                        <div class="section">Pefin AI Financial Advisor</div>
+                        <img class="img" src="images/logos/p1.jpg"/>
+                        <img class="img" src="images/logos/p2.jpg"/>
+
+                        <div class="section">DM | Invent</div>
+                        <img class="img" src="images/logos/dmg.jpg"/>
+                        <img class="img" src="images/logos/dmy.jpg"/>
+
+                        <div class="section">davviq</div>
+                        <img class="img" src="images/logos/dg.jpg"/>
+                        <img class="img" src="images/logos/db.jpg"/>
+                        
+
+                        <div data-duit='{"tmpl": "grid-icon-template"}'></div>
+                        
+                    </div>
+                </div> -->
+
+                <div class="item-area sketches" dui-id="item-area item-sketches" dui-pin>
+                    <div class="item-content">
+
+                        <div class="title">Sketches</div>
+                        <div class="subtitle">Various</div>
+
+                        <br/>
+                        
+                        <div class="section">Milk Explosion</div>
+                        <img class="img" src="images/sketches/m.jpg"/>
+
+                        <!-- <div class="section">Car Design</div>
+                        <img class="img" src="images/sketches/c1.jpg"/>
+                        <img class="img" src="images/sketches/c2.jpg"/> -->
+
+                        <div class="section">Brush Design</div>
+                        <img class="img" src="images/sketches/b1.jpg"/>
+
+                        <div class="section">Sony w810i</div>
+                        <img class="img" src="images/sketches/s1.jpg"/>
+                        <img class="img" src="images/sketches/s2.jpg"/>
+
+                        <div class="section">Jean Paul the T-Rex</div>
+                        <img class="img" src="images/sketches/1.jpg"/>
+                        
+
+                        <div data-duit='{"tmpl": "grid-icon-template"}'></div>
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute; z-index:-100; width:0; height:0; display:none;">
+    <symbol viewBox="0 0 140 100" id="logomark">
+        <path d="M0.491,2.849l25.975,25.975c0.289,0.258,0.511,0.793,0.488,1.18v68.405c0,0.92,0.747,1.667,1.667,1.667
+H76.99c27.636,0,50.038-22.402,50.038-50.036c0-27.635-22.402-50.038-50.038-50.038h-16.7c-0.92,0-1.667,0.747-1.667,1.668
+c-0.022,0.386,0.2,0.922,0.489,1.179l17.397,17.398c0.249,0.28,0.768,0.502,1.143,0.489c15.882,0.313,28.694,13.417,28.649,29.303
+c0,16.187-13.124,29.311-29.311,29.311H49.347c-0.921,0-1.668-0.747-1.668-1.668V51.707c0-0.922,0.747-1.667,1.668-1.667h23.617
+c0.921,0,1.667-0.747,1.667-1.668c0.022-0.388-0.198-0.923-0.489-1.18L27.443,0.49c-0.258-0.289-0.793-0.511-1.18-0.489H1.67
+c-0.922,0-1.668,0.747-1.668,1.668C-0.021,2.056,0.201,2.592,0.491,2.849z" />
+    </symbol>
+    <symbol viewBox="0 0 500 100" id="logotype">
+        <path d="M77.431,0.001H60.744c-0.92,0-1.667,0.746-1.667,1.667c-0.022,0.387,0.2,0.921,0.489,1.178l17.387,17.386
+            c0.247,0.279,0.766,0.501,1.14,0.488c15.871,0.313,28.674,13.408,28.631,29.282c0,16.176-13.114,29.289-29.292,29.289H49.809
+            c-0.921,0-1.667-0.743-1.667-1.666V51.669c0-0.919,0.746-1.667,1.667-1.667h23.6c0.919,0,1.666-0.745,1.666-1.667
+            c0.022-0.387-0.197-0.921-0.488-1.178L27.919,0.49c-0.258-0.291-0.792-0.512-1.179-0.488H2.164c-0.921,0-1.667,0.746-1.667,1.667
+            C0.475,2.055,0.695,2.589,0.985,2.846l25.957,25.957c0.289,0.258,0.511,0.792,0.488,1.178v68.354c0,0.923,0.745,1.667,1.667,1.667
+            h48.334c27.615,0,50.002-22.385,50.002-50C127.433,22.388,105.046,0.001,77.431,0.001z M161.245,70.857
+            c-0.169-0.086-0.489-0.151-0.678-0.144h-19.02c-0.618-0.025-1.295,0.413-1.523,0.991l-11.548,25.957
+            c-0.375,0.84,0.003,1.822,0.846,2.2c0.169,0.084,0.487,0.149,0.677,0.141h19.02c0.618,0.025,1.296-0.413,1.522-0.986
+            l11.549-25.958C162.464,72.217,162.085,71.232,161.245,70.857z M254.838,60.501c-0.172-0.085-0.488-0.149-0.678-0.14h-19.02
+            c-0.617-0.029-1.297,0.411-1.521,0.985l-4.344,9.759c-0.125,0.336-0.512,0.721-0.846,0.847c-0.84,0.372-1.824-0.006-2.201-0.847
+            L195.035,0.99c-0.227-0.575-0.905-1.015-1.523-0.988h-20.504c-0.618-0.026-1.294,0.414-1.522,0.988l-20.763,46.668
+            c-0.375,0.841,0.004,1.827,0.846,2.202c0.168,0.085,0.487,0.152,0.677,0.143h19.02c0.618,0.027,1.295-0.413,1.523-0.989
+            l8.949-20.115c0.125-0.335,0.51-0.719,0.845-0.845c0.841-0.375,1.826,0.005,2.201,0.845l31.195,70.118
+            c0.227,0.573,0.904,1.012,1.521,0.986h20.504c0.619,0.025,1.297-0.413,1.523-0.986l16.156-36.313
+            C256.057,61.861,255.68,60.877,254.838,60.501z M348.43,50.146c-0.17-0.085-0.486-0.153-0.678-0.144h-19.02
+            c-0.615-0.026-1.297,0.414-1.521,0.991l-8.951,20.112c-0.125,0.336-0.51,0.721-0.846,0.847c-0.84,0.372-1.824-0.006-2.199-0.847
+            L284.02,0.99c-0.227-0.575-0.906-1.015-1.523-0.988h-20.502c-0.619-0.026-1.295,0.414-1.523,0.988l-16.156,36.313
+            c-0.373,0.84,0.004,1.826,0.848,2.2c0.168,0.086,0.484,0.153,0.678,0.144h19.02c0.615,0.027,1.295-0.413,1.52-0.988l4.342-9.759
+            c0.127-0.335,0.514-0.719,0.848-0.845c0.842-0.375,1.826,0.005,2.201,0.845l31.193,70.118c0.229,0.573,0.904,1.012,1.525,0.986
+            h20.5c0.619,0.025,1.297-0.413,1.525-0.986l20.762-46.67C349.648,51.506,349.271,50.521,348.43,50.146z M370.676,0.145
+            c-0.168-0.085-0.484-0.153-0.676-0.144h-19.021c-0.617-0.026-1.295,0.414-1.523,0.988l-11.547,25.958
+            c-0.371,0.84,0.004,1.826,0.846,2.199c0.17,0.085,0.488,0.154,0.676,0.145h19.021c0.617,0.025,1.295-0.415,1.523-0.99
+            l11.547-25.957C371.896,1.505,371.52,0.52,370.676,0.145z M499.014,97.159l-25.957-25.956c-0.289-0.259-0.512-0.792-0.488-1.179
+            V1.668c0-0.921-0.746-1.667-1.666-1.667h-48.336c-27.615,0-50,22.386-50,50.001c0,27.616,22.385,50,50,50h16.688
+            c0.92,0,1.666-0.744,1.666-1.667c0.023-0.383-0.199-0.918-0.488-1.177l-17.383-17.385c-0.252-0.28-0.77-0.503-1.143-0.489
+            c-15.871-0.313-28.674-13.408-28.629-29.283c0-16.176,13.113-29.29,29.289-29.29h27.625c0.92,0,1.666,0.746,1.666,1.667v25.956
+            c0,0.921-0.746,1.667-1.666,1.667h-23.6c-0.922,0-1.67,0.747-1.67,1.667c-0.021,0.388,0.201,0.923,0.49,1.178l46.668,46.67
+            c0.258,0.288,0.791,0.509,1.18,0.486h24.576c0.918,0,1.666-0.744,1.666-1.667C499.525,97.953,499.303,97.418,499.014,97.159z"/>
+    </symbol>
+</svg>
+
+</body>

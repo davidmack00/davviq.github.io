@@ -1,0 +1,210 @@
+  ////////////////////////////
+ //  commonly used styles  //
+////////////////////////////
+
+//--------------------------------
+//COLORS SECTION
+//--------------------------------
+
+@color-r-hue: 0;
+@color-r: hsl(@color-r-hue, 100%, 46%);
+@color-r-dark: darken(@color-r, 10%);
+@color-r-light: lighten(@color-r, 10%);
+
+@color-y-hue: 40;
+@color-y: hsl(@color-y-hue, 100%, 56%);
+@color-y-dark: darken(@color-y, 10%);
+@color-y-light: lighten(@color-y, 10%);
+
+@color-g-hue: 100;
+@color-g: hsl(@color-g-hue, 100%, 35%);
+@color-g-dark: darken(@color-g, 10%);
+@color-g-light: lighten(@color-g, 10%);
+
+@color-b-hue: 200;
+@color-b: hsl(@color-b-hue, 100%, 46%);
+@color-b-dark: darken(@color-b, 10%);
+@color-b-light: lighten(@color-b, 10%);
+
+@color-v-hue: 280;
+@color-v: hsl(@color-v-hue, 100%, 59%);
+@color-v-dark: darken(@color-v, 10%);
+@color-v-light: lighten(@color-v, 10%);
+
+///////////////////////////
+//by name
+
+@red-hue: 0;
+@red: hsl(@red-hue, 100%, 46%);
+@red-dark: darken(@red, 10%);
+@red-light: lighten(@red, 10%);
+
+@yellow-hue: 40;
+@yellow: hsl(@yellow-hue, 100%, 56%);
+@yellow-dark: darken(@yellow, 10%);
+@yellow-light: lighten(@yellow, 10%);
+
+@green-hue: 100;
+@green: hsl(@green-hue, 100%, 35%);
+@green-dark: darken(@green, 10%);
+@green-light: lighten(@green, 10%);
+
+@blue-hue: 200;
+@blue: hsl(@blue-hue, 100%, 46%);
+@blue-dark: darken(@blue, 10%);
+@blue-darker: darken(@blue, 20%);
+@blue-light: lighten(@blue, 10%);
+
+@violet-hue: 280;
+@violet: hsl(@violet-hue, 100%, 59%);
+@violet-dark: darken(@violet, 10%);
+@violet-light: lighten(@violet, 10%);
+
+
+
+//shades of gray (only ~20)
+@gray0: hsl(0,0%,0%);
+@gray10: hsl(0,0%,10%);
+@gray20: hsl(0,0%,20%);
+@gray25: hsl(0,0%,25%);
+@gray30: hsl(0,0%,30%);
+@gray40: hsl(0,0%,40%);
+@gray50: hsl(0,0%,50%);
+@gray60: hsl(0,0%,60%);
+@gray70: hsl(0,0%,70%);
+@gray75: hsl(0,0%,75%);
+@gray80: hsl(0,0%,80%);
+@gray85: hsl(0,0%,85%);
+@gray88: hsl(0,0%,88%);
+@gray90: hsl(0,0%,90%);
+@gray92: hsl(0,0%,92%);
+@gray94: hsl(0,0%,94%);
+@gray95: hsl(0,0%,95%);
+@gray96: hsl(0,0%,96%);
+@gray97: hsl(0,0%,97%);
+@gray98: hsl(0,0%,98%);
+@gray99: hsl(0,0%,99%);
+@gray100: hsl(0,0%,100%);
+@white: @gray100;
+@black: @gray0;
+
+//black transparencies
+@black0: hsla(0,0%,0%,0.0);
+@black05: hsla(0,0%,0%,0.05);
+@black10: hsla(0,0%,0%,0.1);
+@black15: hsla(0,0%,0%,0.15);
+@black20: hsla(0,0%,0%,0.2);
+@black30: hsla(0,0%,0%,0.3);
+@black40: hsla(0,0%,0%,0.4);
+@black50: hsla(0,0%,0%,0.5);
+@black60: hsla(0,0%,0%,0.6);
+@black70: hsla(0,0%,0%,0.7);
+@black80: hsla(0,0%,0%,0.8);
+@black90: hsla(0,0%,0%,0.9);
+@black100: hsla(0,0%,0%,1);
+
+//white transparencies
+@white0: hsla(0,0%,100%,0);
+@white10: hsla(0,0%,100%,0.1);
+@white20: hsla(0,0%,100%,0.2);
+@white30: hsla(0,0%,100%,0.3);
+@white40: hsla(0,0%,100%,0.4);
+@white50: hsla(0,0%,100%,0.5);
+@white60: hsla(0,0%,100%,0.6);
+@white70: hsla(0,0%,100%,0.7);
+@white80: hsla(0,0%,100%,0.8);
+@white90: hsla(0,0%,100%,0.9);
+@white95: hsla(0,0%,100%,0.95);
+@white100: hsla(0,0%,100%,1);
+
+
+//--------------------------------
+//FONTS SECTION
+//--------------------------------
+
+//font-size
+
+@fs-d3:         96px; //display3
+@fs-d2:         72px; //display2
+@fs-d1:         48px; //display1
+@fs-head:       36px; //head
+@fs-subhead:    32px; //subhead 	//secondary
+@fs-title:      24px; //title
+@fs-subtitle:   22px; //subtitle 	//secondary
+@fs-important:  20px; //body+ 		//secondary
+@fs-body:       18px; //body
+@fs-caption:    16px; //body- 		//secondary
+@fs-label:      12px; //label
+
+.fs-d3() {font-size: @fs-d3;}
+.fs-d2() {font-size: @fs-d2;}
+.fs-d1() {font-size: @fs-d1;}
+.fs-head() {font-size: @fs-head;}
+.fs-subhead() {font-size: @fs-subhead;}
+.fs-title() {font-size: @fs-title;}
+.fs-subtitle() {font-size: @fs-subtitle;}
+.fs-important() {font-size: @fs-important;}
+.fs-body() {font-size: @fs-body;}
+.fs-caption() {font-size: @fs-caption;}
+.fs-label() {font-size: @fs-label;}
+
+
+//font-wieght
+
+@fw-thin: 			100;
+@fw-extra-light:	200; //not in use
+@fw-light: 			300;
+@fw-regular: 		400;
+@fw-medium: 		500;
+@fw-demi: 			600; //not in use
+@fw-bold: 			700;
+@fw-heavy: 			800; //not in use
+@fw-black: 			900;
+
+.fw-thin() {font-weight: @fw-thin;}
+.fw-light() {font-weight: @fw-light;}
+.fw-regular() {font-weight: @fw-regular;}
+.fw-medium() {font-weight: @fw-medium;}
+.fw-bold() {font-weight: @fw-bold;}
+.fw-black() {font-weight: @fw-black;}
+
+//--------------------------------
+//ANIMATIONS SECTION
+//--------------------------------
+
+//animation speed
+
+@t-sss: 2s;
+@t-ss: 1s;
+@t-s: 0.7s;
+@t-m: 0.5s;
+@t-f: 0.2s;
+@t-ff: 0.1s;
+@t-fff: 0s;
+@t0: 0s;
+
+@t-default: @t-m;
+@speed: @t-default;
+
+//--------------------------------
+//NUMERICAL VALUES SECTION
+//--------------------------------
+
+//radius
+@rad-s: 3px;
+@rad-m: 5px;
+@rad-l: 8px;
+
+@r-xxs: 2px;
+@r-xs: 3px;
+@r-s: 4px;
+@r-m: 5px;
+@r-l: 8px;
+@r-xl: 10px;
+@r-xxl: 100px;
+
+@r-default: @rad-m;
+@radius: @r-default;
+
+//generic values
+@spacing: 10px;

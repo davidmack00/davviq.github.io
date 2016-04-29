@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>duit - Direct UI Templates</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	
+    <script src="duit.js"></script>
+</head>
+
+<body>
+
+<script id="basic-template" type="text/duit">
+    <div>Hi there!</div>
+</script>
+
+<script id="simple-template" type="text/duit">
+    <div class="test-{{name}}">
+        Hello, I'm {{name}} and I live in {{location}}
+    </div>
+</script>
+
+<script id="nested-template" type="text/duit">
+    <div class="test-class">
+        My name is {{name}}
+
+        <!-- duit-placeholder my-placeholder -->
+
+        I forgot {{name}} already.
+
+    </div>
+</script>
+
+<script id="repeat-template" type="text/duit">
+    <div>
+        Hello, I'm {{name}} and I live in {{location}}
+        <br />
+        My neighbors are:
+        <ol>
+            <!-- duit-loop neighbors -->
+            <li>{{neighbor}}</li>
+            <!-- /duit-loop neighbors -->
+        </ol>
+    </div>
+</script>
+
+<script id="menu-template" type="text/duit">
+    <div style="background: gray; padding: 20px;">
+        <ol>
+            <!-- duit-placeholder menu-placeholder -->
+        </ol>
+    </div>
+</script>
+
+<script id="menu-item-template" type="text/duit">
+    <li style="background: white; padding: 20px;">{{menu-item}}</li>
+</script>
+
+<script id="complex-template" type="text/duit">
+	<div class="test-class name-{{name}}">
+        Hello, I'm {{name}} and I live in {{location}}
+        <ol>
+            <!-- duit-loop options -->
+            <li>
+                {{option}}
+                <ol>
+                    <!-- duit-loop sub-options -->
+                    <li>{{sub-option}}</li>
+                    <!-- /duit-loop sub-options -->
+                </ol>
+            </li>
+            <!-- /duit-loop options -->
+        </ol>
+    </div>
+</script>
+
+<div class="content-area">
+	duit - Direct UI Templates
+
+	<br />
+	<br />
+   
+    TEMPLATE WITH NO DATA:
+    <br />
+    <br />
+
+    <div data-duit='{"tmpl": "basic-template"}'></div>
+
+    <br />
+    <br />
+    <br />
+   
+    TEMPLATE WITH DATA:
+    <br />
+    <br />
+
+    <div data-duit='{
+        "tmpl": "simple-template",
+        "data": {"name": "Bob", "location": "NYC"}
+    }'>
+    </div>
+
+    <br />
+    <br />
+
+    (if data is left out)
+    <br />
+    <div data-duit='{"tmpl": "simple-template"}'></div>
+
+    <br />
+    <br />
+    <br />
+
+    REPEATED TEMPLATE:
+    <br />
+    <br />
+
+    <div data-duit='{
+        "tmpl": "simple-template",
+        "data": [
+            {"name": "world", "location": "solar system"},
+            {"name": "small world", "location": "Florida"}
+        ]
+    }'>
+    </div>
+
+    <br />
+    <br />
+    <br />
+   
+    NESTER TEMPLATE:
+    <br />
+    <br />
+
+    <div data-duit='{
+        "tmpl": "nested-template",
+        "data": {
+            "name": "Bob",
+            "duit-placeholder": {
+                "target": "my-placeholder",
+                "tmpl": "simple-template",
+                "data": {
+                    "name": "Steve",
+                    "location": "NYC"
+                }
+            }
+        }
+    }'>
+    </div>
+
+    <br />
+    <br />
+    <br />
+   
+    NESTER TEMPLATE CONTAINING A REPEATED TEMPLATE:
+    <br />
+    <br />
+
+    <div data-duit='{
+        "tmpl": "nested-template",
+        "data": {
+            "name": "Bob",
+            "duit-placeholder": {
+                "target": "my-placeholder",
+                "tmpl": "simple-template",
+                "data": [
+                    {"name": "Steve", "location": "NYC"},
+                    {"name": "Sally", "location": "VT"}
+                ]
+            }
+        }
+    }'>
+    </div>
+
+    <br />
+    <br />
+    <br />
+   
+    DOUBLE NESTER TEMPLATES CONTAINING A REPEATED TEMPLATE:
+    <br />
+    <br />
+
+    <div data-duit='{
+        "tmpl": "nested-template",
+        "data": {
+            "name": "Bob",
+            "duit-placeholder": {
+                "target": "my-placeholder",
+                "tmpl": "nested-template",
+                "data": {
+                    "name": "Sam",
+                    "duit-placeholder": {
+                        "target": "my-placeholder",
+                        "tmpl": "simple-template",
+                        "data": [
+                            {"name": "Steve", "location": "NYC"},
+                            {"name": "Sally", "location": "VT"}
+                        ]
+                    }
+                }
+            }
+        }
+    }'>
+    </div>
+
+    <br />
+    <br />
+    <br />
+   
+    REPEATED NESTER TEMPLATE CONTAINING DOUBLE NESTER TEMPLATES:
+    <br />
+    <br />
+
+    <div data-duit='{
+        "tmpl": "nested-template",
+        "data": [
+            {
+                "name": "Bob",
+                "duit-placeholder": {
+                    "target": "my-placeholder",
+                    "tmpl": "nested-template",
+                    "data": {
+                        "name": "Steve",
+                        "duit-placeholder": {
+                            "target": "my-placeholder",
+                            "tmpl": "nested-template",
+                            "data": {
+                                "name": "Joe"
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "name": "Sally",
+                "duit-placeholder": {
+                    "target": "my-placeholder",
+                    "tmpl": "nested-template",
+                    "data": {
+                        "name": "Mary",
+                        "duit-placeholder": {
+                            "target": "my-placeholder",
+                            "tmpl": "nested-template",
+                            "data": {
+                                "name": "Ashley"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }'>
+    </div>
+
+    <br />
+    <br />
+    <br />
+   
+    REPEATED NESTER TEMPLATE CONTAINING A REPEATED TEMPLATE:
+    <br />
+    <br />
+
+    <div data-duit='{
+        "tmpl": "nested-template",
+        "data": [
+            {
+                "name": "1",
+                "duit-placeholder": {
+                    "target": "my-placeholder",
+                    "tmpl": "simple-template",
+                    "data": [
+                        {"name": "1a", "location": "place1"},
+                        {"name": "1b", "location": "place2"}
+                    ]
+                }
+            },
+            {
+                "name": "2",
+                "duit-placeholder": {
+                    "target": "my-placeholder",
+                    "tmpl": "simple-template",
+                    "data": [
+                        {"name": "2a", "location": "place3"},
+                        {"name": "2b", "location": "place4"}
+                    ]
+                }
+            }
+        ]
+    }'>
+    </div>
+
+    <br />
+    <br />
+    <br />
+
+    MENU USECASE:
+    <br />
+    <br />
+
+    <div data-duit='{
+        "tmpl": "menu-template",
+        "data": {
+            "duit-placeholder": {
+                "target": "menu-placeholder",
+                "tmpl": "menu-item-template",
+                "data": [
+                    {"menu-item": "item1"},
+                    {"menu-item": "item2"},
+                    {"menu-item": "item3"}
+                ]
+            }
+        }
+    }'>
+    </div>
+
+    <br />
+    <br />
+    <br />
+
+    ---------------------(duit-beta)---------------------
+
+    <br />
+    <br />
+    <br />
+
+
+    SIMPLE WITH SUB REPEAT:
+    <br />
+    (partial support only, cannot combine simple repeat with sub repeat)
+    <br />
+    <br />
+
+    <div data-duit='{
+        "tmpl": "repeat-template",
+        "data": {
+            "name": "world",
+            "location": "solar system",
+            "neighbors": [
+                {"neighbor": "Venus"},
+                {"neighbor": "Mars"},
+                {"neighbor": "Some asteroids"}
+            ]
+        }
+    }'>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    -------------NOT SUPPORTED------------
+    <br />
+    <br />
+    <br />
+    <br />
+
+	<div data-duit='{
+		"tmpl": "complex-template",
+		"data": [
+			{
+                "name": "world",
+                "location": "solar system",
+                "options": [
+                    {
+                        "sub-options": [
+                            {"sub-option": "sub-thing1"},
+                            {"sub-option": "sub-thing2"}
+                        ]
+                    },
+                    {
+                        "option": "thing2",
+                        "sub-options": [
+                            {"sub-option": "sub-thing1"},
+                            {"sub-option": "sub-thing2"}
+                        ]
+                    },
+                    {
+                        "option": "thing3",
+                        "sub-option": "sub-thing-3"
+                    }
+                ]
+            },
+            {
+                "name": "world2",
+                "location": "solar system2",
+                "options": [
+                    {
+                        "sub-options": [
+                            {"sub-option": "sub-thing-1"},
+                            {"sub-option": "sub-thing-2"}
+                        ]
+                    },
+                    {
+                        "option": "thing2",
+                        "sub-option": "sub-thing-3"
+                    }
+                ]
+            }
+        ]
+    }'>
+    </div>
+
+</div>
+
+
+</body>
+</html>

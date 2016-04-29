@@ -1,0 +1,388 @@
+//--------------------------------
+//COLORS SECTION
+//--------------------------------
+
+
+//hues for colors
+@red: 5;
+@orange: 40;
+@green: 100;
+@green2: 120;
+@blue: 192;
+@purple: 270;
+@magenta: 345;
+
+@color-red: hsl(@red,100%,50%);
+@color-blue: hsl(@blue,100%,55%);
+@color-green: hsl(@green,90%,55%);
+@color-orange: hsl(@orange,100%,60%);
+@color-magenta: hsl(@magenta,100%,60%);
+@color-purple: hsl(@purple,100%,60%);
+
+//usable colors
+@colorP: @color-purple;
+@colorS: @color-purple;
+
+
+
+// @hue-primary: @blue;
+// //@colorP: hsl(@hue-primary,100%,55%);
+
+// @colorP1: hsl(@hue-primary,100%,80%);
+// @colorP2: hsl(@hue-primary,100%,90%);
+// @colorP3: hsl(@hue-primary,20%,98%);
+
+// //@colorP-05: hsl(@hue-primary,70%,55%);
+// @colorP-1: hsl(@hue-primary,100%,45%);
+// @colorP-2: hsl(@hue-primary,100%,40%);
+// @colorP-3: hsl(@hue-primary,100%,35%);
+// @colorP-4: hsl(@hue-primary,100%,30%);
+// @colorP-5: hsl(@hue-primary,100%,25%);
+// @colorP-6: hsl(@hue-primary,100%,20%);
+
+// @colorPa: hsla(@hue-primary,100%,55%,1);
+// @colorP1a: hsla(@hue-primary,100%,80%,1);
+
+
+// @hue2: @magenta;
+// @colorS: hsl(@hue2,100%,60%);
+
+// @colorS-1: hsl(@hue2,100%,40%);
+// @colorS-2: hsl(@hue2,100%,30%);
+
+
+//shades of gray (less than 50)
+@gray0: hsl(0,0%,0%);
+@gray10: hsl(0,0%,10%);
+@gray20: hsl(0,0%,20%);
+@gray30: hsl(0,0%,30%);
+@gray40: hsl(0,0%,40%);
+@gray50: hsl(0,0%,50%);
+@gray60: hsl(0,0%,60%);
+@gray65: hsl(0,0%,60%);
+@gray70: hsl(0,0%,70%);
+@gray75: hsl(0,0%,75%);
+@gray80: hsl(0,0%,80%);
+@gray85: hsl(0,0%,85%);
+@gray88: hsl(0,0%,88%);
+@gray90: hsl(0,0%,90%);
+@gray92: hsl(0,0%,92%);
+@gray94: hsl(0,0%,94%);
+@gray95: hsl(0,0%,95%);
+@gray96: hsl(0,0%,96%);
+@gray98: hsl(0,0%,98%);
+@gray99: hsl(0,0%,99%);
+@gray100: hsl(0,0%,100%);
+
+@white: @gray100;
+@black: @gray0;
+
+//black transparencies
+@black0: hsla(0,0%,0%,0.0);
+@black05: hsla(0,0%,0%,0.05);
+@black10: hsla(0,0%,0%,0.1);
+@black15: hsla(0,0%,0%,0.15);
+@black20: hsla(0,0%,0%,0.2);
+@black30: hsla(0,0%,0%,0.3);
+@black40: hsla(0,0%,0%,0.4);
+@black50: hsla(0,0%,0%,0.5);
+@black60: hsla(0,0%,0%,0.6);
+@black70: hsla(0,0%,0%,0.7);
+@black80: hsla(0,0%,0%,0.8);
+@black90: hsla(0,0%,0%,0.9);
+@black100: hsla(0,0%,0%,1);
+
+//white transparencies
+@white0: hsla(0,0%,100%,0);
+@white10: hsla(0,0%,100%,0.1);
+@white20: hsla(0,0%,100%,0.2);
+@white30: hsla(0,0%,100%,0.3);
+@white40: hsla(0,0%,100%,0.4);
+@white50: hsla(0,0%,100%,0.5);
+@white60: hsla(0,0%,100%,0.6);
+@white80: hsla(0,0%,100%,0.8);
+@white90: hsla(0,0%,100%,0.9);
+@white100: hsla(0,0%,100%,1);
+
+//font-size
+@fs-XXXL: 112px;
+@fs-XXL: 56px;
+@fs-XL: 45px;
+@fs-L: 34px;
+@fs-xxl: 24px;
+@fs-xl: 20px;
+@fs-l: 16px;
+@fs-m: 14px;
+@fs-s: 12px;
+@fs-xs: 11px;
+
+@fs-d: @fs-m;
+
+@fs-d4: @fs-XXXL;
+@fs-d3: @fs-XXL;
+@fs-d2: @fs-XL;
+@fs-d1: @fs-L;
+@fs-headline: @fs-xxl;
+@fs-title: @fs-xl;
+@fs-subhead: @fs-l;
+@fs-body: @fs-m;
+@fs-caption: @fs-s;
+
+//font-wieght
+@thin: 100;
+@light: 300;
+@regular: 400;
+@medium: 500;
+@bold: 700;
+@black: 900;
+
+@w-1: @thin;
+@w0: @light;
+@w1: @regular;
+@w2: @medium;
+@w3: @bold;
+@w4: @black;
+
+.font-d1() {
+    font-size: @fs-d1;
+    font-weight: @regular;
+    opacity: 0.54;
+}
+
+.font-headline() {
+    font-size: @fs-headline;
+    font-weight: @regular;
+    opacity: 0.87;
+}
+
+.font-title() {
+    font-size: @fs-title;
+    font-weight: @medium;
+    opacity: 0.87;
+}
+
+.font-subhead() {
+    font-size: @fs-subhead;
+    font-weight: @regular;
+    opacity: 0.87;
+}
+
+.font-body2 {
+    font-size: @fs-body;
+    font-weight: @medium;
+    opacity: 0.87;
+}
+
+.font-body {
+    font-size: @fs-body;
+    font-weight: @regular;
+    opacity: 0.87;
+}
+
+.font-caption {
+    font-size: @fs-caption;
+    font-weight: @regular;
+    opacity: 0.54;
+}
+
+.font-menu {
+    font-size: @fs-body;
+    font-weight: @medium;
+    opacity: 0.87;
+}
+
+.font-button {
+    font-size: @fs-body;
+    font-weight: @medium;
+    opacity: 0.87;
+
+    text-transform: uppercase;
+}
+
+//animation speed
+@t-sss: 2s;
+@t-ss: 1s;
+@t-s: 0.8s;
+@t-m: 0.5s;
+@t-f: 0.2s;
+@t-ff: 0.1s;
+@t-fff: 0s;
+@t0: 0s;
+
+@t-d: @t-m;
+
+//radius
+@r-s: 3px;
+@r-m: 5px;
+@r-l: 10px;
+
+@r-d: @r-m;
+
+
+
+  ///////////////////////
+ //  scrolling stuff  //
+///////////////////////
+
+//.padded-scrollbar;
+//body {.padded-scrollbar;}
+
+.padded-scrollbar() {
+    @width: 10px;
+    @width: 5px;
+    @width: 8px;
+
+    ::-webkit-scrollbar {
+        width: @width;
+    }
+	::-webkit-scrollbar-track {
+        margin: @spacing 0;
+        border-radius: @width;
+        //border-radius: 0;
+        background: hsla(0,0%,60%,0.1);
+        //box-shadow: inset 0 0 2px hsla(0,0%,60%,0.4);
+
+        &:active {
+            background: hsla(0,0%,60%,0.2);
+        }
+	}
+	::-webkit-scrollbar-thumb {
+        .animate;
+        border-radius: @width;
+        //border-radius: 0;
+
+        background: hsla(0,0%,60%,0);
+
+        //padded scroll area overrides this
+        &:active {
+            background: hsla(0,0%,60%,1);
+        }
+	}
+}
+
+.padded-scroll-area() {
+    .absolute;
+    .tblr0;
+    margin: 0 @spacing/2;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    //&:hover {overflow-y: auto;}
+
+    &:hover::-webkit-scrollbar-thumb {
+        background: hsla(0,0%,60%,0.6);
+    }
+}
+
+.padded-scroll-padding() {
+    margin: @spacing @spacing/2;
+}
+
+.padded-scroll-area {.padded-scroll-area;}
+.padded-scroll-padding {.padded-scroll-padding;}
+
+
+
+
+  //////////////
+ //  styles  //
+//////////////
+
+//3d box
+.fx-box(@color: @gray80, @size: 3px) {
+    border-bottom: @size solid @color;
+    border-radius: @size;
+    border-bottom-left-radius: @size @size*2;
+    border-bottom-right-radius: @size @size*2;
+}
+
+.pop-out() {
+    background: @white10;
+    box-shadow:
+        0 0 0 1px @black10,
+        inset 0 1px 0 @white20,
+        0 1px 3px @black10;
+}
+
+.pop-in() {
+    background: @black10;
+    box-shadow:
+        inset 0 0 0 1px @black20,
+        0 1px 0 @white10;
+}
+
+.pop-out-button() {
+    &:hover {.pop-out;}
+    &:active {.pop-in;}
+}
+
+
+
+  ///////////////
+ //  shadows  //
+///////////////
+
+@shadow-outline: 0 0 0 1px @black10;
+@shadow-outline20: 0 0 0 1px @black20;
+@shadow-hilight: 0 1px 0 @white100;
+@shadow-hilight60: 0 1px 0 @white60;
+@shadow-basic: 0 0 10px @black10;
+@shadow-basic20: 0 0 10px @black20;
+
+@shadow-subtle: 
+    0 1px 3px @black10, 
+    0 0 1px @black10;
+
+.shadow-basic() {
+	box-shadow: 0 0 10px @black20;
+}
+
+.shadow-subtle() {
+    box-shadow:
+        0 1px 3px @black10,
+        0 0 1px @black10;
+}
+
+.shadow-popover() {
+    box-shadow:
+        0 5px 20px @black15,
+        @shadow-outline;
+}
+
+.shadow-3d() {
+    box-shadow:
+        inset @shadow-outline20,
+        inset 0 2px 0 @white60,
+        0 1px 3px @black10;
+}
+
+//text-shadow
+.text-hilight(@hilight: @white100) {
+    text-shadow: 0 1px 0 @hilight;
+}
+
+.text-shadow(@shadow: @black10) {
+    text-shadow: 0 1px 1px @shadow;
+}
+
+.text-bevel(@shadow: @black40) {
+    text-shadow: 0 -1px 0 @shadow;
+}
+
+
+
+
+  ////////////////
+ // box styles //
+////////////////
+
+.box-style() {
+    .shadow-subtle;
+    .radius;
+    background: @gray100;
+}
+
+.alt-box-style() {
+    border-color: @gray85;
+    background: @gray96;
+}

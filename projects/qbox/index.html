@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+
+    <title>Qbox</title>
+
+    <link href="style/main.less" rel="stylesheet/less" type="text/css" />
+    <script src="libs/jquery.js"></script>
+    <script src="libs/less.js"></script>
+    <script src="script.js" type="text/javascript"></script>
+<script src='/google_analytics_auto.js'></script></head>
+  <body>
+    <div id="shell" class="">
+
+      <div class="action-button-area">
+        <div class="question-button text">Q</div>
+        <div class="background-animator">
+          <div class="inner"></div>
+        </div>
+        <div class="question-button background"></div>
+      </div>
+      
+      
+      <div class="main-page">
+        <div class="main-header">
+          <div class="settings-button" id="settings-button">
+            <div class="bars">
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+            </div>
+          </div>
+          <div class="app-title">Qbox</div>
+        </div>
+
+        <div class="main-body">
+          <div class="side-panel">
+            <div class="clip">
+              <div class="wrap"></div>
+            </div>
+          </div>
+          <div class="message-area">
+
+            <div class="message-group">
+              <div class="message-wrapper user">
+                <div class="message-bubble user">
+                  <div class="message">Should I try to get her number?</div>
+                </div>
+              </div>
+              <div class="message-wrapper stranger">
+                <div class="message-bubble stranger">
+                  <div class="message">Only if she's a 7 or above... ;)</div>
+                  <div class="rating">
+                    <div class="label">Rate this answer</div>
+                    <div class="action">
+                      <div class="vote up">+</div>
+                      <div class="vote down">-</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="message-group">
+              <div class="message-wrapper user">
+                <div class="message-bubble user">
+                  <div class="message">Was this my question?</div>
+                </div>
+              </div>
+              <div class="message-wrapper stranger">
+                <div class="message-bubble stranger">
+                  <div class="message">Indeed.</div>
+                  <div class="rating">
+                    <div class="label">Rate this answer</div>
+                    <div class="action">
+                      <div class="vote up">+</div>
+                      <div class="vote down">-</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="message-group">
+              <div class="message-wrapper user">
+                <div class="message-bubble user">
+                  <div class="message">What is your favorite color?</div>
+                </div>
+              </div>
+              <div class="message-wrapper stranger">
+                <div class="message-bubble stranger">
+                  <div class="message">I am color blind!</div>
+                  <div class="rating">
+                    <div class="label">Rate this answer</div>
+                    <div class="action">
+                      <div class="vote up">+</div>
+                      <div class="vote down">-</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          <div class="footer-area">
+            <div class="qoins-indicator">
+              <span>0</span>
+              <span>Q</span>
+            </div>
+            <div class="input-area" data-placeholder="&nbsp;Ask a question..." contenteditable></div>
+            <div class="send-button"></div>
+          </div>
+        </div>
+      </div>
+      <div class="answer-page">
+        <div class="cancel-answer">X</div>
+        <div class="answer-wrapper">
+          <div class="answer-area">
+            <div class="question">What should I ask you today?</div>
+            <div class="reply" data-placeholder="&nbsp;Share your answer..." contenteditable></div>
+          </div>
+          <div class="footer-area">
+            <div class="qoins-indicator">
+              <span>0</span>
+              <span>Q</span>
+            </div>
+            <div class="send-button"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>

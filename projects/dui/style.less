@@ -1,0 +1,44 @@
+* {box-sizing: border-box;}
+
+.parent {
+	//display: inline-block;
+	padding: 10px;
+	margin: 10px;
+	border-radius: 4px;
+	background: lightgreen;
+}
+
+.button {
+	display: inline-block;
+	padding: 10px;
+	margin: 20px;
+	border-radius: 4px;
+	background: green;
+	color: white;
+}
+
+.menu {
+	display: inline-block;
+	padding: 10px;
+	margin: 20px;
+	
+	//style
+	border-radius: 4px;
+	background: white;
+	//border: 1px solid green;
+	
+	//reset
+	display: none;
+	
+	&.dui-active {
+		display: inline-block;
+	}
+}
+
+.dui-active {
+	box-shadow: 0 0 5px green;
+	
+	.menu {
+		display: inline-block;
+	}
+}

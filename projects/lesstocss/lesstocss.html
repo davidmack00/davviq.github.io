@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Less to CSS</title>
+
+	<!-- put your less files here -->
+	<link href="test.less" rel="stylesheet/less" />
+
+	<style type="text/less">
+		body {
+			white-space: pre;
+			margin: 0;
+			padding: 20px;
+			font-family: arial, sans-serif;
+			font-size: 14px;
+			line-height: 1.25;
+			color: hsl(180,40%,80%);
+			background: hsl(180,80%,30%);
+		}
+	</style>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.6.0/less.min.js"></script>
+
+	<script>
+		$(function() {
+			var content = $("#content");
+
+			function compile() {
+				var css = $('style[id^="less:"]').text();
+				
+				if (css == []) {
+					content.html("Oops, Less.js wasn't ready yet. Click here to try again.");
+					console.log("try again");
+				}
+				
+				else {
+					content.html(css);
+					console.log(css);
+				}
+			}
+
+			content.on("click", function() {
+				compile();
+			});
+
+			console.log( "Wait a moment..." );
+			setTimeout(function(){compile();}, 1500);
+		});
+	</script>
+</head>
+
+<body>
+	<div>/*Less to CSS*/</div>
+	<div id="content">Wait a moment...</div>
+</body>

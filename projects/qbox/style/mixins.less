@@ -1,0 +1,524 @@
+
+
+  ///////////////////
+ //  HTML Usable  //
+///////////////////
+
+.no-select { 
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.no-events {
+    pointer-events: none;
+}
+
+
+  ////////////////////
+ //  Test Classes  //
+////////////////////
+
+.test1 {border: 1px solid blue;}
+.test2 {background: yellow;}
+
+.test-bor {border: 1px solid black;}
+.test-mar {margin: 10px 5px;}
+.test-pad {padding: 10px;}
+.test-bkg {background: white;}
+
+.test-style {
+    .test-bor;
+    .test-mar;
+    .test-pad;
+    .test-bkg;
+}
+
+
+  //////////////////
+ //  Animations  //
+//////////////////
+
+.animation(@animation) {
+    -webkit-animation: @animation;
+    -moz-animation: @animation;
+    -ms-animation: @animation;
+    //-o-animation: @animation;
+    animation: @animation;
+}
+
+.animation-iteration-count(@animation) {
+    -webkit-animation-iteration-count: @animation;
+    -moz-animation-iteration-count: @animation;
+    -ms-animation-iteration-count: @animation;
+    //-o-animation-iteration-count: @animation;
+    animation-iteration-count: @animation;
+}
+
+.animation-direction(@animation) {
+    -webkit-animation-direction: @animation;
+    -moz-animation-direction: @animation;
+    -ms-animation-direction: @animation;
+    //-o-animation-direction: @animation;
+    animation-direction: @animation;
+}
+
+.animation-duration(@animation) {
+    -webkit-animation-duration: @animation;
+    -moz-animation-duration: @animation;
+    -ms-animation-duration: @animation;
+    //-o-animation-duration: @animation;
+    animation-direction: @animation;
+}
+
+.animation-fill-mode(@fill) {
+    -webkit-animation-fill-mode: @fill;
+    -moz-animation-fill-mode: @fill;
+    -ms-animation-fill-mode: @fill;
+    //-o-animation-fill-mode: @fill;
+    animation-fill-mode: @fill;
+}
+
+.make-keyframes(@name, @keys) {
+    @-webkit-keyframes @name {@keys();}
+    @-moz-keyframes @name {@keys();}
+    @-ms-keyframes @name {@keys();}
+    @keyframes @name {@keys();}
+}
+
+.play-animation(@name, @duration: 0.7s, @easing: ease) {
+    .animation(@name @duration @easing);
+}
+
+.keyframes(@name, @keys, @duration: 0.7s, @fill: both) {
+    .make-keyframes(@name, @keys);
+    .play-@{name} {
+        .play-animation(@name, @duration);
+        .animation-fill-mode(@fill);
+    }
+}
+
+
+  ///////////////////
+ //  Transitions  //
+///////////////////
+
+.transition(@transition) {
+	-webkit-transition: @transition;
+	-moz-transition: @transition;
+	-ms-transition: @transition;
+	//-o-transition: @transition;
+	transition: @transition;
+}
+
+@time: 0.5s;
+
+.animate(@duration: @time, @easing: ease, @type: all) {
+	.transition(@type @duration @easing);
+}
+
+.animate-enter(@duration: @time) {
+    &:hover {.animate(@duration);}
+}
+
+.animate-exit(@duration: @time) {
+    .animate(@duration);
+    &:hover {.animate(0s);}
+    &:active {.animate(0s);}
+}
+
+.animate-pointerdown(@duration: @time) {
+    &:active {.animate(@duration);}
+}
+
+.animate-pointerup(@duration: @time) {
+    .animate(@duration);
+    &:active {.animate(0s);}
+}
+
+
+  /////////////////
+ //  Transform  //
+/////////////////
+
+.transform(@transform) {
+    -webkit-transform: @transform;
+    -moz-transform: @transform;
+    -ms-transform: @transform;
+    //-o-transform: @transform;
+    transform: @transform;
+}
+
+.transform-origin(@transform) {
+    -webkit-transform-origin: @transform;
+    -moz-transform-origin: @transform;
+    -ms-transform-origin: @transform;
+    //-o-transform-origin: @transform;
+    transform-origin: @transform;
+}
+
+
+  /////////////////
+ //  Gradients  //
+/////////////////
+
+.gradient(@gradient) {
+    background: -webkit-linear-gradient(@gradient);
+    background: -moz-linear-gradient(@gradient);
+    background: -ms-linear-gradient(@gradient);
+    background: -o-linear-gradient(@gradient);
+    background: linear-gradient(@gradient);
+}
+
+.vert-gradient(@grad1: #000, @grad2: #fff) {
+    //background: @grad1;
+    background: -webkit-linear-gradient(top, @grad1 0%,@grad2 100%);
+    background: -moz-linear-gradient(top, @grad1 0%, @grad2 100%);
+    background: -ms-linear-gradient(top, @grad1 0%,@grad2 100%);
+    background: linear-gradient(top, @grad1 0%,@grad2 100%);
+}
+
+
+  ///////////////////
+ //  Positioning  //
+///////////////////
+
+.absolute() {
+	position: absolute;
+}
+
+.relative() {
+	position: relative;
+}
+
+.inline-block() {
+    display: inline-block;
+}
+
+.flex {
+    display: flex;
+}
+
+.t0() {top: 0;}
+.b0() {bottom: 0;}
+.l0() {left: 0;}
+.r0() {right: 0;}
+
+.tb0() {
+	.t0;
+	.b0;
+}
+
+.lr0() {
+	.l0;
+	.r0;
+}
+
+.tblr0() {
+	.t0;
+	.b0;
+	.l0;
+	.r0;
+}
+
+.w100() {width: 100%;}
+.h100() {height: 100%;}
+
+.w0() {width: 0;}
+.h0() {height: 0;}
+
+.wh100() {
+	.w100;
+	.h100;
+}
+
+.fill-space() {
+    .absolute;
+    .t0;
+    .l0;
+    .w100;
+    .h100;
+}
+
+.fill-space-tblr() {
+    .absolute;
+    .tblr0;
+}
+
+.on-right {float: right !important;}
+.on-left {float: left !important;}
+
+.r-align {text-align: right !important;}
+.l-align {text-align: left !important;}
+.c-align {text-align: center !important;}
+
+
+  ///////////////
+ //  Various  //
+///////////////
+
+@undef: "undefined";
+
+.pseudo() {
+	content: "";
+	display: block;
+}
+
+.clearfix {
+    &:after {
+        .pseudo;
+        clear: both;
+    }
+}
+
+.pointer() {
+    cursor: pointer;
+}
+
+
+  //////////////
+ //  Radius  //
+//////////////
+
+.radius(@radius: @rad-default) {
+    border-radius: @radius;
+}
+
+.round() {
+    border-radius: 100%;
+}
+
+.top-radius(@r: @undef) {
+    .radius(@r);
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.bottom-radius(@r: @undef) {
+    .radius(@r);
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
+}
+
+.left-radius(@r: @undef) {
+    .radius(@r);
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.right-radius(@r: @undef) {
+    .radius(@r);
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+  /////////////////////
+ //  Text Overflow  //
+/////////////////////
+
+.truncate() {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+  ///////////////
+ //  Justify  //
+///////////////
+
+.justify-base() {
+    text-align: justify;
+	line-height: 0;
+
+	&:after {
+		content:"";
+		display: inline-block;
+		width: 100%;
+		height: 0px;
+        font-size: 0;
+		vertical-align: top;
+
+        font-size: 0;
+        line-height: 0;
+        pointer-events: none;
+        visibility: hidden;
+	}
+}
+
+.justify-element(@v-align: middle, @t-align: left) {
+    .relative;
+    z-index: 1;
+    line-height: 1;
+    display: inline-block;
+	text-align: @t-align;
+	vertical-align: @v-align;
+}
+
+.justify-children(@v-align: middle, @t-align: left) {
+	.justify-base;
+	> * {.justify-element(@v-align, @t-align);}
+}
+
+.justify-content {.justify-children}
+
+// legacy justified
+.justified(@v-align: middle, @t-align: left) {
+	.justify-base;
+	> * {.justify-element(@v-align, @t-align);}
+}
+
+
+
+  /////////////////
+ //  Alignment  //
+/////////////////
+
+.inline-base(@h-align: inherit) {
+    font-size: 0;
+    text-align: @h-align;
+}
+
+.inline-element(@v-align: middle, @t-align: left) {
+    font-size: 14px; //fallback
+    font-size: 1rem;
+    display: inline-block;
+    text-align: @t-align;
+    vertical-align: @v-align;
+}
+
+.inline-children(@h-align: inherit, @v-align: middle, @t-align: left) {
+    .inline-base(@h-align);
+    > * {.inline-element(@v-align, @t-align);}
+}
+.inline-content {.inline-children;}
+
+
+  ///////////////
+ //  V-align  //
+///////////////
+
+.v-align() {
+    display: inline-block;
+	vertical-align: middle;
+}
+
+.v-align-pseudo-style() {
+    .v-align;
+    content:"";
+    height: 100%;
+    width: 0;
+    //font-size: 0;
+    //line-height: 0;
+}
+
+// doesn't seem to work...
+.v-align-pseudo(@pseudo: after) {
+    //&:@{pseudo} {.v-align-pseudo-style;}
+    @pseudo-bugfix: e(":@pseudo");
+    &@{pseudo-bugfix} {.v-align-pseudo-style;}
+}
+
+.v-align-pseudo-before() {
+    //.v-align-pseudo(before);
+    &:before {.v-align-pseudo-style;}
+}
+
+.v-align-pseudo-after() {
+    //.v-align-pseudo(after);
+    &:after {.v-align-pseudo-style;}
+}
+
+.v-align-base() {
+    > * {.v-align;}
+}
+
+.v-align-children(@pseudo: after) {
+    .v-align-base;
+    //.v-align-pseudo(@pseudo);
+    .v-align-pseudo-after;
+}
+
+.v-align-content {
+    .v-align-children;
+}
+
+//doesn't work yet...
+.vert-justified() {
+    .v-align-children;
+    .justified;
+}
+
+
+  ////////////
+ //  Fade  //
+////////////
+
+.fade-out() {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.fade-in() {
+    //visibility: visible;
+    visibility: inherit; //visible children with fade-in fix
+    visibility: initial;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+  /////////////////////////
+ //  Transform Effects  //
+/////////////////////////
+
+@translate-reset: translate3d(0,0,0);
+@translate-right: translate3d(100%,0,0);
+@translate-left: translate3d(-100%,0,0);
+@translate-up: translate3d(0,-100%,0);
+@translate-down: translate3d(0,100%,0);
+
+@scale-reset: scale3d(1,1,1);
+//@scale120: scale3d(1.2,1.2,1);
+//@scale80: scale3d(0.8,0.8,1);
+//@scale40: scale3d(0.4,0.4,1);
+//@scale20: scale3d(0.2,0.2,1);
+
+.transform-reset() {.transform(@translate-reset @scale-reset);}
+.scale(@S: 0.5) {.transform(scale3d(@S,@S,1));}
+.translate(@Y: -20%, @X: 0) {.transform(translate3d(@X,@Y,0));}
+
+.transform-basic(@S: 1, @Y: 0, @X: 0, @R: 0) {
+    .transform(translate3d(@X,@Y,0) scale3d(@S,@S,1) rotate3d(0,0,1,@R));
+}
+
+.translate-up() {.translate(-100%);}
+.translate-down() {.translate(100%);}
+.translate-left() {.translate(0,-100%);}
+.translate-right() {.translate(0,100%);}
+
+.fade-vert(@distance: -20%) {
+    .fade-out;
+    .translate(@distance);
+}
+
+.fade-back() {
+    .fade-in;
+    .transform-reset;
+}
+
+  ///////////////
+ // Triangles //
+///////////////
+
+.triangle-basic(@S: 10px, @C: white, @D1: bottom, @D2: @undef) {
+    width: 0;
+    height: 0;
+    border: @S solid transparent;
+    border-@{D1}-color: @C;
+    border-@{D2}-color: @C;
+}

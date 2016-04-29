@@ -1,0 +1,97 @@
+  ///////////////////
+ //  loading bar  //
+///////////////////
+
+@loading-bar-size: 50px;
+
+@loading-bar-keys: {
+    from {background-position: 0 0;}
+    to {background-position: @loading-bar-size 0;}
+};
+.keyframes(loading-bar-animation, @loading-bar-keys);
+
+
+  //////////////////////////
+ //  opacity animations  //
+//////////////////////////
+
+@fade-out-keys: {
+    //from {.fade-out;}
+    //to {.fade-in;}
+    from {}
+    to {opacity: 0;}
+};
+
+@fade-in-keys: {
+    //from {.fade-in;}
+    //to {.fade-out;}
+    from {opacity: 0;}
+    to {}
+};
+
+.fade-out-animation(@duration: 0.5s, @fill: forward) {
+    .make-keyframes(fade-out-animation, @fade-out-keys);
+    .play-animation(fade-out-animation, @duration, ease-out);
+    .animation-fill-mode(@fill);
+}
+ .fade-in-animation(@duration: 0.5s, @fill: none) {
+    .make-keyframes(fade-in-animation, @fade-in-keys);
+    .play-animation(fade-in-animation, @duration, ease-in);
+    .animation-fill-mode(@fill);
+}
+
+.animate-fade-out {
+    .fade-out-animation;
+}
+.animate-fade-in {
+    .fade-in-animation;
+}
+
+.exit-animation {
+    .fade-out-animation(1.5s);
+}
+.enter-animation {
+    .fade-in-animation(1.5s);
+}
+
+
+  ////////////////////////////
+ //  workspace body panel  //
+////////////////////////////
+
+//states
+@scale: 0.9;
+@move: 20%;
+.ws-panel-default() {
+    .transform-reset;
+    .fade-in;
+    z-index: 10;
+}
+
+.ws-panel-right() {
+    .transform-basic(@S: @scale, @X: @move);
+    .fade-out;
+    z-index: 0;
+}
+
+.ws-panel-left() {
+    .transform-basic(@S: @scale, @X: -@move);
+    .fade-out;
+    z-index: 0;
+}
+
+
+//ws panel out animation
+@ws-panel-out-keys: {
+    from {.ws-panel-default;}
+    to {.ws-panel-right;}
+};
+.keyframes(ws-panel-out-animation, @ws-panel-out-keys, 0.7s);
+
+ //ws panel in animation
+ @ws-panel-in-keys: {
+    from {.ws-panel-left;}
+    to {.ws-panel-default;}
+};
+.keyframes(ws-panel-in-animation, @ws-panel-in-keys, 0.7s 0.3s);
+

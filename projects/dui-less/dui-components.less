@@ -1,0 +1,222 @@
+/*Direct UI Components*/
+
+// shared variables
+//@border-width: 0.15em;
+@border-width: 4px;
+
+  ///////////////////
+ //  duic-button  //
+///////////////////
+
+.duic-button {
+	.inline-block;
+	padding: 10px 20px;
+
+	//style
+	.pointer;
+	.fs-important;
+	text-transform: uppercase;
+	border-radius: 2px;
+	background: @color-v;
+	color: @white;
+}
+
+
+
+  //////////////
+ //  duic-x  //
+//////////////
+
+.duic-x {
+    font-size: 30px;
+	//color: @color-v;
+    //border-color: @color-v;
+
+    .relative;
+	.inline-block;
+    width: 1em;
+    height: 1em;
+    .pointer;
+
+    &:before, &:after {
+        .pseudo;
+        .absolute;
+        //.w100;
+        .h0;
+        .l0;
+        width: 1em;
+        top: 0.5em;
+        //top: 50%;
+        border-bottom: solid;
+		border-width: @border-width;
+        border-color: inherit;
+    }
+
+    &:before {.transform-basic(@Y: -50%, @R: 45deg);}
+    &:after {.transform-basic(@Y: -50%, @R: -45deg);}
+}
+
+
+
+  //////////////////
+ //  duic-check  //
+//////////////////
+
+.duic-check {
+	@height: 0.5em;
+	@width: 1em;
+	@diagonal: @height/sqrt(2);
+	@true-width: 1em * @diagonal*3;
+	@true-height: 1em * @diagonal*2;
+
+	@check-height-correction: 0.5em/sqrt(2) * 1/2;
+	@true-height-correction: (@true-height - @height)/2;
+	@true-width-correction: (@width - @true-width)/2;
+
+
+    .inline-block;
+    font-size: 30px;
+	
+	//version with true size correction
+	width: @true-width;
+	height: @true-height;
+
+    //color: @color-v;
+    //border-color: @color-v;
+
+    &:before {
+        .pseudo;
+        .block;
+        width: @width;
+        height: @height;
+        border: solid;
+		border-width: @border-width;
+        border-color: inherit;
+        border-top: 0;
+        border-right: 0;
+		
+		//.transform-basic(@R: -45deg, @Y: -@check-height-correction); //without true size correction
+        .transform-basic(@R: -45deg, @Y: -@check-height-correction + @true-height-correction, @X: -@true-width-correction); //with true size correction
+    }
+}
+
+
+
+  //////////////////
+ //  duic-arrow  //
+//////////////////
+
+.duic-arrow {
+    @y-correction: sqrt(2) / 4 * 1em * (0.9); //percentage approximates border-width compensation
+    font-size: 20px;
+
+	//position
+	.inline-block;
+    width: 1em;
+    height: 1em;
+
+    //style
+    .animate(0.2s);
+
+    &:before {
+        .pseudo;
+        .block;
+        width: 1em;
+        height: 1em;
+        border: solid;
+		border-width: @border-width;
+        border-top: none;
+        border-right: none;
+        .transform-basic(@Y: -@y-correction, @R: -45deg);
+    }
+
+    &.flip {
+        .transform-basic(@R: -180deg;)
+    }
+}
+
+
+
+  /////////////////
+ //  duic-ring  //
+/////////////////
+
+.duic-ring {
+    .inline-block;
+    font-size: 30px;
+    width: 1em;
+    height: 1em;
+    border: @border-width solid;
+    border-radius: 1em;
+    //border-color: @color-v;
+}
+
+
+
+  ////////////////
+ //  duic-pin  //
+////////////////
+
+.duic-pin-wrapper {
+	font-size: 30px;
+    .relative;
+	.inline-block;
+    .w0;
+    .h0;
+
+	.duic-pin {
+		//reset
+		font-size: inherit;
+		.absolute;
+		
+		//position
+		.b0;
+		left: -0.5em;
+	}
+}
+
+.duic-pin {
+	font-size: 30px;
+	@exact-margin: (1-1/sqrt(2)) * 1em;
+
+	//position
+	.z(1);
+	.relative;
+	width: 1em;
+	height: 1em;
+	margin-bottom: 0.3em; //approximate
+	margin-bottom: @exact-margin;
+
+	//.flex;
+	.inline-flex;
+	.justify-content(center);
+	.align-items(flex-end);
+	line-height: 1em;
+
+	//style
+	.pointer;
+	color: @white;
+	background: @color-v;
+	border-radius: 100%;
+
+	&:after {
+		font-size: 0.5em;
+		@magic: (sqrt(2)/2 - 0.5) * 1em;
+
+		.pseudo;
+		.block;
+		.z(-1);
+		.absolute;
+		width: 1em;
+		height: 1em;
+		top: 50%;
+		left: 50%;
+		margin-left: -0.5em;
+		margin-top: 2em; //approximate
+		margin-top: @magic;
+		.transform-basic(@R: 45deg);
+
+		//style
+		background: inherit;
+	}
+}

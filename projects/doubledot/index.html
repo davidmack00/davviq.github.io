@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+
+		<title>DoubleDot</title>
+
+		<link href="dots.less" rel="stylesheet/less" type="text/css" />
+		<script src="libs/jquery-2.1.0.min.js"></script>
+		<script src="libs/less-1.6.2.min.js"></script>
+		<script src="dots.js" type="text/javascript"></script>
+</head>
+	<body>
+
+		<div id="shell">
+
+			<div class="header">
+				<div class="header-button">
+					<div class="settings-button">
+						<div class="bar"></div>
+						<div class="bar"></div>
+						<div class="bar"></div>
+					</div>
+					<span class="logo">DoubleDot</span>
+				</div>
+			</div>
+
+			<div class="body">
+				<div class="shadow-cover"></div>
+				<div class="side-panel">
+					<div class="settings-group">
+						<div class="settings colors">
+							<span>Colors</span>
+							<input class="input" id="settings-colors" type="number" name="colors" min="1" max="6" value="5">
+						</div>
+						<div class="settings width">
+							<span>Width</span>
+							<input class="input" id="settings-width" type="number" name="width" min="1" max="20" value="5">
+						</div>
+						<div class="settings height">
+							<span>Height</span>
+							<input class="input" id="settings-height" type="number" name="height" min="1" max="20" value="5">
+						</div>
+						<div class="reset" id="settings-reset">Reset</div>
+					</div>
+				</div>
+				<div class="game-wrapper">
+					<div class="game-container">
+						<div class="dot-area"></div>
+					</div>
+				</div>
+			</div>
+			
+
+			<div class="footer"></div>
+		</div>
+		
+	</body>
+</html>
