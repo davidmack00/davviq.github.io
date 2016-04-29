@@ -151,6 +151,32 @@
                 .transform(skewX(-@m-angle*2));
             }
         }
+
+        .footer {
+            .absolute;
+            .b0;
+            .l0;
+            .w100;
+            .flexbox;
+            .justify-content(space-between);
+            padding: 0 40px;
+            margin-bottom: 20px;
+
+            .icon {
+                .flex-grow;
+                //width: 50px;
+                height: 50px;
+                //padding: 10px;
+                .transform(skewX(-@m-angle/2));
+
+                //style
+                fill: @color-g-darker;
+
+                &:hover {
+                    fill: @color-b;
+                }
+            }
+        }
     }
 
     .nav-cover {
