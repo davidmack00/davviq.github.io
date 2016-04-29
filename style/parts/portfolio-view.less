@@ -151,6 +151,32 @@
                 .transform(skewX(-@m-angle*2));
             }
         }
+
+        .footer {
+            .absolute;
+            .b0;
+            .l0;
+            .w100;
+            .flexbox;
+            .justify-content(space-between);
+            padding: 0 40px;
+            margin-bottom: 20px;
+
+            .icon {
+                .flex-grow;
+                //width: 40px;
+                height: 40px;
+                //padding: 10px;
+                .transform(skewX(-@m-angle/2));
+
+                //style
+                fill: @color-g-darker;
+
+                &:hover {
+                    fill: @color-b;
+                }
+            }
+        }
     }
 
     .nav-cover {
@@ -557,8 +583,12 @@
         .align-items(center);
         .justify-content(center);
 
+        .main-header {
+            margin-top: auto;
+        }
+
         .mail {
-            padding: 40px 0;
+            //padding: 40px 0;
             margin-bottom: 40px;
 
             //style
@@ -609,6 +639,24 @@
             .logo {
                 .relative;
                 left: 2%;
+            }
+        }
+
+        .links {
+            .flexbox;
+            padding-top: 40px;
+            margin-top: auto;
+
+            .icon {
+                width: 40px;
+                height: 40px;
+
+                //style
+                fill: @color-g-darker;
+
+                &:hover {
+                    fill: @color-b;
+                }
             }
         }
     }
